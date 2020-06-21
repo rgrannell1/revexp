@@ -1,5 +1,6 @@
 
 const random = require('./random')
+const distributions = require('./distributions')
 
 const quantifiers = {}
 

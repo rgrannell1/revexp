@@ -51,6 +51,15 @@ characters.space = () => {
 }
 
 /**
+ * Return a literal character or character sequence
+ *
+ * @return {number} the provided data
+ */
+characters.literal = str => {
+  return () => str
+}
+
+/**
  * Any non-line break character
  *
  * @return {number} return a character
