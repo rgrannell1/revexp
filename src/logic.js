@@ -1,6 +1,6 @@
 
 const random = require('./random')
-const { ENGINE_METHOD_ALL } = require('constants')
+const { codes } = require('./constants')
 
 const logic = {}
 
@@ -15,6 +15,12 @@ logic.or = gens => {
 }
 
 logic.and = gens => {
+  gens.forEach(gen => {
+    if (typeof gen !== 'function') {
+      throw new Error(`generator was not a function: ${gen}`)
+    }
+  })
+
   return () => {
     return gens.map(gen => gen()).join('')
   }

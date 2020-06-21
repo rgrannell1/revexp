@@ -1,4 +1,6 @@
 
+const random = require('./random')
+
 const classes = {}
 
 /**
@@ -7,7 +9,7 @@ const classes = {}
  * @param {Array<Object>} gens
  */
 classes.oneOf = gens => {
-  return random.oneOf(gens)
+  return () => random.oneOf(gens)
 }
 
 /**

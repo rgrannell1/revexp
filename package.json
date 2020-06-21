@@ -5,6 +5,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@rgrannell/errors": "^9.1.0",
     "typescript": "^3.9.3"
   },
   "devDependencies": {

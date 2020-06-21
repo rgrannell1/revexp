@@ -13,16 +13,17 @@ const quantifiers = {}
  * @return {string} a string of repeated generator tokens
  */
 quantifiers.zeroOrMoreRepeat = (gen, opts) => {
-  // -- todo factor out sample function.
-  let count = distributions.uniform({ to: 256 })
+  return () => {
+    // -- todo factor out sample function.
+    let count = distributions.uniform({ to: 256 })
 
-  let word = ''
+    let word = ''
 
-  for (let ith = 0; ith < count; ++ith) {
-    word += gen()
+    for (let ith = 0; ith < count; ++ith) {
+      word += gen()
+    }
+    return word
   }
-
-  return () => word
 }
 
 /**
@@ -33,16 +34,18 @@ quantifiers.zeroOrMoreRepeat = (gen, opts) => {
  *
  * @return {string} a string of repeated generator tokens
  */
-quantifiers.oneOrMoreRepeat = (gen, opts) => {
-  // -- todo factor out sample function.
-  let count = Math.floor(Math.random() * 256)
-  let word = gen()
+quantifiers.oneOrMoreRepeat = (gen, opts = {to: 20}) => {
+  return () => {
+    // -- todo factor out sample function.
+    let count = Math.floor(Math.random() * opts.to)
+    let word = gen()
 
-  for (let ith = 0; ith < count; ++ith) {
-    word += gen()
+    for (let ith = 0; ith < count; ++ith) {
+      word += gen()
+    }
+
+    return word
   }
-
-  return () => word
 }
 
 /**
@@ -54,13 +57,15 @@ quantifiers.oneOrMoreRepeat = (gen, opts) => {
  * @return {string} a string of repeated generator tokens
  */
 quantifiers.exactlyRepeat = (gen, opts) => {
-  let word = ''
+  return () => {
+    let word = ''
 
-  for (let ith = 0; ith < opts.count; ++ith) {
-    word += gen()
+    for (let ith = 0; ith < opts.count; ++ith) {
+      word += gen()
+    }
+
+    return word
   }
-
-  return () => word
 }
 
 quantifiers.rangeRepeat = (gen, opts) => {
