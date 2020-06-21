@@ -3,6 +3,12 @@ const random = require('./random')
 
 const characters = {}
 
+characters.any = () => {
+  return random.sample({
+    ranges: [[0x000, 0x10ffff]]
+  })
+}
+
 /**
  * Return a random digit
  *
@@ -65,7 +71,14 @@ characters.literal = str => {
  * @return {number} return a character
  */
 characters.nonLineBreak = () => {
+  return () => {
+    let char
+    while (!char || char === '\n') {
+      const char = characters.any()
+    }
 
+    return char
+  }
 }
 
 module.exports = characters

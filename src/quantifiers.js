@@ -13,6 +13,9 @@ const quantifiers = {}
  * @return {string} a string of repeated generator tokens
  */
 quantifiers.zeroOrMoreRepeat = (gen, opts) => {
+  if (typeof gen !== 'function') {
+    throw new TypeError(`gen was not a function:\n+++\n${gen.toString()}\n+++\n`)
+  }
   return () => {
     // -- todo factor out sample function.
     let count = distributions.uniform({ to: 256 })

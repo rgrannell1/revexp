@@ -5,10 +5,14 @@ const characters = require('./src/characters')
 const quantifiers = require('./src/quantifiers')
 const classes = require('./src/character-classes')
 
-
 while (true) {
-  let x = json.number()
-  let y = parseFloat(x, 10)
-  console.log(y)
-  break
+  let x = json.array()
+  try {
+    JSON.parse(x)
+  } catch (err) {
+    console.log(x)
+    console.log(err)
+    throw 'x'
+  }
+  //break
 }

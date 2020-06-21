@@ -8,7 +8,7 @@ logic.or = gens => {
   const gen = random.oneOf(gens)
 
   if (!gen) {
-    throw new Error('no generators provided')
+    throw new Error(`no generators provided:\n${gens}`)
   }
 
   return gen
