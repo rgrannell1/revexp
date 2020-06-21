@@ -13,7 +13,8 @@ const quantifiers = {}
  */
 quantifiers.zeroOrMoreRepeat = (gen, opts) => {
   // -- todo factor out sample function.
-  let count = Math.floor(Math.random() * 256)
+  let count = distributions.uniform({ to: 256 })
+
   let word = ''
 
   for (let ith = 0; ith < count; ++ith) {

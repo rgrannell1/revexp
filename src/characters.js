@@ -50,4 +50,13 @@ characters.space = () => {
   })
 }
 
+/**
+ * Any non-line break character
+ *
+ * @return {number} return a character
+ */
+characters.nonLineBreak = () => {
+
+}
+
 module.exports = characters

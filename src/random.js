@@ -30,8 +30,13 @@ random.sample = opts => {
   }
 }
 
+/**
+ * Return a random boolean value
+ *
+ * @return {boolean} a true-false value
+ */
 random.coinFlip = () => {
-  return Math.random() > 0.5
+  return random.oneOf([true, false])
 }
 
 random.oneOf = elems => {

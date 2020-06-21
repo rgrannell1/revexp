@@ -1,5 +1,6 @@
 
 const random = require('./random')
+const { ENGINE_METHOD_ALL } = require('constants')
 
 const logic = {}
 
@@ -11,6 +12,12 @@ logic.or = gens => {
   }
 
   return gen
+}
+
+logic.and = gens => {
+  return () => {
+    return gens.map(gen => gen()).join('')
+  }
 }
 
 module.exports = logic
