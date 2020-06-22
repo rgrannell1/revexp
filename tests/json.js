@@ -1,11 +1,11 @@
 
 const tap = require('tap')
-const json = require('../src/json')
+const json = require('../src/specs/json')
 const tools = require('../src/tools')
 
 const summariseCases = failures => {
-  const entry = failures[failures.length - 1].split('')
-  return JSON.stringify(entry, null, 2)
+  const entry = failures[failures.length - 1]
+  return JSON.stringify({entry}, null, 2)
 }
 
 const tests = {}

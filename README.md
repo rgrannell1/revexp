@@ -1,5 +1,5 @@
 
-# revexp
+# revexp [![Build Status](https://travis-ci.org/rgrannell1/revexp.svg?branch=master)](https://travis-ci.org/rgrannell1/revexp)
 
 Reverse regular-expression generator.
 

@@ -1,11 +1,15 @@
 
 const random = require('./random')
+const {
+  ranges,
+  rangeSets
+} = require('./constants')
 
 const characters = {}
 
 characters.any = () => {
   return random.sample({
-    ranges: [[0x000, 0x10ffff]]
+    ranges: [ranges.ALL_CHARS]
   })
 }
 
@@ -16,7 +20,7 @@ characters.any = () => {
  */
 characters.digit = () => {
   return random.sample({
-    ranges: [[48, 57]]
+    ranges: [ranges.DIGITS]
   })
 }
 
@@ -27,7 +31,7 @@ characters.digit = () => {
  */
 characters.nonZeroDigit = () => {
   return random.sample({
-    ranges: [[49, 57]]
+    ranges: [ranges.NONZERO_DIGITS]
   })
 }
 
@@ -38,10 +42,7 @@ characters.nonZeroDigit = () => {
  */
 characters.wordChar = () => {
   return random.sample({
-    ranges: [
-      [65, 90],
-      [97, 122]
-    ]
+    ranges: rangeSets.WORD_CHAR
   })
 }
 
@@ -52,18 +53,7 @@ characters.wordChar = () => {
  */
 characters.space = () => {
   return random.sample({
-    ranges: [
-      [0x0020],
-      [0x00A0],
-      [0x1680],
-      [0x180E],
-      [0x2000],
-      [0x2009, 0x200B],
-      [0x202F],
-      [0x205F],
-      [0x3000],
-      [0xFEFF]
-    ]
+    ranges: rangeSets.SPACES
   })
 }
 

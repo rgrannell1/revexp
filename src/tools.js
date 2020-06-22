@@ -1,5 +1,5 @@
 
-const json = require('./json')
+const json = require('./specs/json')
 const logic = require('./logic')
 const characters = require('./characters')
 const quantifiers = require('./quantifiers')
@@ -7,6 +7,16 @@ const classes = require('./character-classes')
 
 const tools = { }
 
+/**
+ * Shrink a failing test-case
+ *
+ * @param {Function} opts.test
+ * @param {Function} opts.gen
+ * @param {Boolean} opts.all
+ * @param {Function} opts.until
+ *
+ * @return {string | Array<string>}
+ */
 tools.shrink = ({ test, gen, all = false, until }) => {
   let min
   let count = 0

@@ -1,7 +1,10 @@
 
+const { ranges } = require('./constants')
 const random = require('./random')
 
 const classes = {}
+
+// -- get your game on.
 
 /**
  * Return one of the provided generators
@@ -23,7 +26,7 @@ classes.oneOf = gens => {
 classes.notOneOf = seqs => {
   return () => {
     let char = random.sample({
-      ranges: [[0x000, 0x10ffff]]
+      ranges: [ranges.ALL_CHARS]
     })
 
     while (true) {
@@ -31,7 +34,7 @@ classes.notOneOf = seqs => {
       // -- potentially non-terminating.
       if (seqs.includes(char)) {
         char = random.sample({
-          ranges: [[0x000, 0x10ffff]]
+          ranges: [ranges.ALL_CHARS]
         })
       } else {
         break

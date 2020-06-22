@@ -1,9 +1,9 @@
 
-const logic = require('./logic')
-const classes = require('./character-classes')
-const quants = require('./quantifiers')
-const chars = require('./characters')
-const characters = require('./characters')
+const logic = require('../logic')
+const classes = require('../character-classes')
+const quants = require('../quantifiers')
+const chars = require('../characters')
+const characters = require('../characters')
 
 /**
  * Based on https://www.json.org/json-en.html
@@ -58,11 +58,16 @@ json.string = () => {
     '\\f',
     '\\n',
     '\\r',
-    '\\t'
+    '\\t',
+
+    // -- tmp
+    '"',
+    '\\',
+    '\/',
   ])
   const character = logic.or([
     normalCodepoint,
-    specials
+    //specials
   ])
 
   return logic.and([
