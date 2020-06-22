@@ -40,25 +40,25 @@ json.value = () => {
 
 json.string = () => {
   const specials = classes.oneOf([
-    '\"',
+    '\\"',
     '\\',
-    '\/',
-    '\b',
-    '\f',
-    '\n',
-    '\r',
-    '\t'
+    '\\/',
+    '\\b',
+    '\\f',
+    '\\n',
+    '\\r',
+    '\\t'
   ])
   const doubleString = chars.literal('"')
   const normalCodepoint = classes.notOneOf([
-    '\"',
+    '\\"',
     '\\',
-    '\/',
-    '\b',
-    '\f',
-    '\n',
-    '\r',
-    '\t'
+    '\\/',
+    '\\b',
+    '\\f',
+    '\\n',
+    '\\r',
+    '\\t'
   ])
   const character = logic.or([
     normalCodepoint,
@@ -80,26 +80,29 @@ json.whitespace = classes.oneOf([
 ])
 
 json.exponent = logic.and([
-  quants.oneOrMoreRepeat(chars.digit, { to: 10 }),
+  chars.nonZeroDigit,
+  quants.zeroOrMoreRepeat(chars.digit, { to: 9 }),
   quants.onceOrNone(logic.and([
     chars.literal('.'),
     quants.oneOrMoreRepeat(chars.digit, { to: 10 })
   ])),
-  classes.oneOf([
-    chars.literal('e'),
-    chars.literal('E'),
-  ]),
+  classes.oneOf(['e', 'E']),
   quants.onceOrNone(chars.literal('-')),
   quants.oneOrMoreRepeat(chars.digit, {to: 2})
 ])
 
-json.number = logic.and([
-  quants.onceOrNone(chars.literal('-')),
-  quants.oneOrMoreRepeat(chars.digit, { to: 10 }),
-  quants.onceOrNone(logic.and([
-    chars.literal('.'),
-    quants.oneOrMoreRepeat(chars.digit, { to: 10 })
-  ]))
+json.number = logic.or([
+  json.exponent,
+  logic.and([
+    quants.onceOrNone(chars.literal('-')),
+    chars.nonZeroDigit,
+    quants.zeroOrMoreRepeat(chars.digit, { to: 9 }),
+    quants.onceOrNone(logic.and([
+      chars.literal('.'),
+      quants.oneOrMoreRepeat(chars.digit, { to: 10 })
+    ]))
+  ])
 ])
+
 
 module.exports = json

@@ -27,6 +27,8 @@ classes.notOneOf = seqs => {
     })
 
     while (true) {
+      // -- update char until one that isn't in seqs is created
+      // -- potentially non-terminating.
       if (seqs.includes(char)) {
         char = random.sample({
           ranges: [[0x000, 0x10ffff]]

@@ -21,6 +21,17 @@ characters.digit = () => {
 }
 
 /**
+ * Return a random non-zero digit
+ *
+ * @return {number} return a digit
+ */
+characters.nonZeroDigit = () => {
+  return random.sample({
+    ranges: [[49, 57]]
+  })
+}
+
+/**
  * Return a word-character
  *
  * @return {number} return a character
