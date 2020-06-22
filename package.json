@@ -4,6 +4,9 @@
   "description": "",
   "author": "",
   "license": "MIT",
+  "scripts": {
+    "test": "npx tap"
+  },
   "dependencies": {
     "@rgrannell/errors": "^9.1.0",
     "typescript": "^3.9.3"
