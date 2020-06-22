@@ -25,17 +25,13 @@ classes.oneOf = gens => {
  */
 classes.notOneOf = seqs => {
   return () => {
-    let char = random.sample({
-      ranges: [ranges.ALL_CHARS]
-    })
+    let char = classes.range([ranges.ALL_CHARS])
 
     while (true) {
       // -- update char until one that isn't in seqs is created
       // -- potentially non-terminating.
       if (seqs.includes(char)) {
-        char = random.sample({
-          ranges: [ranges.ALL_CHARS]
-        })
+        char = classes.range([ranges.ALL_CHARS])
       } else {
         break
       }
@@ -53,8 +49,8 @@ classes.notOneOf = seqs => {
  *
  *
  */
-classes.range = ({from, to}) => {
-
+classes.range = ranges => {
+  return random.sample({ranges})
 }
 
 /**

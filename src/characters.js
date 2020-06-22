@@ -1,4 +1,5 @@
 
+const classes = require('./character-classes')
 const random = require('./random')
 const {
   ranges,
@@ -8,7 +9,7 @@ const {
 const characters = {}
 
 characters.any = () => {
-  return random.sample({
+  return classes.range({
     ranges: [ranges.ALL_CHARS]
   })
 }
@@ -19,9 +20,7 @@ characters.any = () => {
  * @return {number} return a digit
  */
 characters.digit = () => {
-  return random.sample({
-    ranges: [ranges.DIGITS]
-  })
+  return classes.range([ranges.DIGITS])
 }
 
 /**
@@ -30,9 +29,7 @@ characters.digit = () => {
  * @return {number} return a digit
  */
 characters.nonZeroDigit = () => {
-  return random.sample({
-    ranges: [ranges.NONZERO_DIGITS]
-  })
+  return classes.range([ranges.NONZERO_DIGITS])
 }
 
 /**
@@ -41,7 +38,7 @@ characters.nonZeroDigit = () => {
  * @return {number} return a character
  */
 characters.wordChar = () => {
-  return random.sample({
+  return classes.range({
     ranges: rangeSets.WORD_CHAR
   })
 }
@@ -52,7 +49,7 @@ characters.wordChar = () => {
  * @return {number} return a character
  */
 characters.space = () => {
-  return random.sample({
+  return classes.range({
     ranges: rangeSets.SPACES
   })
 }
@@ -72,14 +69,7 @@ characters.literal = str => {
  * @return {number} return a character
  */
 characters.nonLineBreak = () => {
-  return () => {
-    let char
-    while (!char || char === '\n') {
-      const char = characters.any()
-    }
-
-    return char
-  }
+  return classes.notOneOf(['\n'])
 }
 
 module.exports = characters

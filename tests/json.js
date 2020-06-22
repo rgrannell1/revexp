@@ -17,7 +17,7 @@ tests.jsonParses = (name, gen) => {
     },
     gen,
     all: true,
-    until: tools.shrink.until.count(100_000)
+    until: tools.shrink.until.timeElapsed(2_000)
   })
 
   if (failures.length > 0) {
