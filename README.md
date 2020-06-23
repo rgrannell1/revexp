@@ -3,6 +3,17 @@
 
 Reverse regular-expression generator.
 
+```js
+
+RevExp()
+  .add(RevExp.oneOf(['test', 'best']))
+  .add()
+  .add()
+  .build()
+```
+
+## Why?
+
 ### License
 
 The MIT License

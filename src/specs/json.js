@@ -19,11 +19,6 @@ json.array = () => {
       // -- TODO add comma delimiting
     ]),
     characters.literal(']')
-
-
-
-
-
   ])()
 }
 
@@ -108,6 +103,5 @@ json.number = logic.or([
     ]))
   ])
 ])
-
 
 module.exports = json

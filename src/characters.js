@@ -9,9 +9,7 @@ const {
 const characters = {}
 
 characters.any = () => {
-  return classes.range({
-    ranges: [ranges.ALL_CHARS]
-  })
+  return classes.range([ranges.ALL_CHARS])
 }
 
 /**
