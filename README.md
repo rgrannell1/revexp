@@ -3,16 +3,78 @@
 
 Reverse regular-expression generator.
 
-```js
+## Documentation
 
-RevExp()
-  .add(RevExp.oneOf(['test', 'best']))
-  .add()
-  .add()
-  .build()
+### Generators
+
+Generators are the building-blocks for reverse regular-expressions. A generator:
+
+- takes configuration options
+- generates a random string
+
+#### `characters/any`
+
+The `any` generator generates all characters.
+
+```js
+{
+  any: {}
+}
 ```
 
-## Why?
+#### `characters/digit`
+
+Generate the arabic digits `0...9`.
+
+Options:
+-
+
+```js
+{
+  digit: {
+    zero: false
+  }
+}
+```
+
+#### `classes/oneOf`
+
+```js
+{
+  oneof: [
+    {
+      range: [[0, 100]]
+    }
+  ]
+}
+```
+
+#### `classes/notOnOf`
+
+Generate all characters _not_ in a provided list of single-letter characters.
+
+```js
+{
+  notOneOf: [
+    "a",
+    "b",
+    "1"
+  ]
+}
+```
+
+#### `classes/range`
+
+Generate all characters in a character-point range.
+
+```js
+{
+  range: [
+    [0, 100],
+    [300, 400]
+  ]
+}
+```
 
 ### License
 
