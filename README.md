@@ -121,9 +121,30 @@ Combine a sequence of generators, yielding a concatenated string.
 }
 ```
 
+#### `quantifiers/repeat`
+
+Repeat a generator a set number of times. Note that many generators will
+yield different results each time they are called, so this will not necessarily
+create a string of repeated characters.
+
+Options:
+- `value`: the generator to repeat
+- `min`: the minimum number of items to return from the generator [mandatory]
+- `max`: the maximum number of items to return from the generator [optional, default: 256]
+
+```js
+{
+  repeat: {
+    value: { digit: {} },
+    min: 0,
+    max: 256
+  }
+}
+```
+
 #### `quantifiers/optional`
 
-Return either the generator, or an empty string.
+Return either the generator, or an empty string. A shorthand for calling `repeat` with `min=0`, `max=1`.
 
 ```js
 {
@@ -131,8 +152,7 @@ Return either the generator, or an empty string.
 }
 ```
 
-#### `quantifiers/repeat`
-
+---
 
 ### License
 
