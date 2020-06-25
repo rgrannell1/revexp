@@ -108,6 +108,32 @@ Generate all characters in a character-point range.
 }
 ```
 
+#### `logic/every`
+
+Combine a sequence of generators, yielding a concatenated string.
+
+```js
+{
+  every: [
+    { digit: { zero: false } },
+    { digit: {} }
+  ]
+}
+```
+
+#### `quantifiers/optional`
+
+Return either the generator, or an empty string.
+
+```js
+{
+  optional: { digit: {} }
+}
+```
+
+#### `quantifiers/repeat`
+
+
 ### License
 
 The MIT License
