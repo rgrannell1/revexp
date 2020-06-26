@@ -25,7 +25,8 @@ const constants = {
     ]
   },
   codes: {
-    INVALID_GENERATOR: 'RE_001'
+    INVALID_GENERATOR: 'RE_001',
+    INVALID_CONFIG: 'RE_002'
   }
 }
 
