@@ -5,7 +5,8 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "test": "npx tap"
+    "test": "npx tap",
+    "run:watch": "ls src/*.js | entr -s 'node src/interface.js'"
   },
   "dependencies": {
     "@rgrannell/errors": "^9.1.0",

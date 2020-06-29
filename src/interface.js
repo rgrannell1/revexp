@@ -37,40 +37,79 @@ assert.type = (val, type, name) => {
   }
 }
 
-interfaces.json = (spec, opts) => {
-  if (spec.any) {
-    assert.exactProperties(spec, ['any'])
-    assert.type(spec.any, 'object', 'any')
-  } else if (spec.digit) {
-    assert.type(spec.digit, 'object', 'digit')
-
-    if (spec.digit.hasOwnProperty('zero')) {
-      assert.type(spec.digit, 'boolean', 'zero')
+interfaces.json = (spec, part) => {
+  const supported = Object.keys(interfaces.json)
+  for (const prop of supported) {
+    if (part.hasOwnProperty(prop)) {
+      interfaces.json[prop](spec, part)
+      return
     }
-  } else if (spec.oneOf) {
-    assert.type(spec.oneOf, 'array', 'oneOf')
+  }
 
-    for (const elem of spec.oneOf) {
-    }
+  const message = `the config object below does not use a supported config method\n` +
+    JSON.stringify(part, null, 2) +
+   '\n\n' +
+    'valid properties are ' + supported.map(val => `'${val}'`).join(', ')
 
-  } else if (spec.notOneOf) {
-    assert.type(spec.notOneOf, 'array', 'notOneOf')
+  throw errors.badConfig(message, codes.INVALID_CONFIG)
+}
 
-    for (const elem of spec.notOneOf) {
-      assert.type(elem, 'string', 'notOneOf elem')
-      interfaces.json(elem, opts)
-    }
+interfaces.json.every = part => {
+  assert.exactProperties(part, ['every'])
 
-  } else if (spec.range) {
-    assert.type(spec.range, 'object', 'oneOf element')
-    assert.exactProperties(spec.range, ['range'])
-
-    assert.type(spec.range, 'array', 'range')
+  for (const elem of part.every) {
+    interfaces.json(spec, part)
   }
 }
 
-interfaces.json({
-  notOneOf: ['a']
-})
+interfaces.json.any = part => {
+  assert.exactProperties(part, ['any'])
+  assert.type(part.any, 'object', 'any')
+
+}
+
+interfaces.json.digit = part => {
+  assert.type(part.digit, 'object', 'digit')
+
+  if (part.digit.hasOwnProperty('zero')) {
+    assert.type(part.digit, 'boolean', 'zero')
+  }
+
+}
+
+interfaces.json.oneOf = part => {
+  assert.type(part.oneOf, 'array', 'oneOf')
+
+  for (const elem of part.oneOf) {
+
+  }
+}
+
+interfaces.json.notOneOf = part => {
+  assert.type(part.notOneOf, 'array', 'notOneOf')
+
+  for (const elem of part.notOneOf) {
+    assert.type(elem, 'string', 'notOneOf elem')
+    interfaces.json(elem, opts)
+  }
+
+}
+
+interfaces.json.range = part => {
+  assert.type(part.range, 'object', 'oneOf element')
+  assert.exactProperties(part.range, ['range'])
+
+  assert.type(part.range, 'array', 'range')
+
+
+}
+
+interfaces.json.ref = part => {
+  assert.type(part.ref, 'object', 'ref')
+
+}
+
+const spec = require('./specs/json-config')
+interfaces.json(spec, spec.array)
 
 module.exports = interfaces

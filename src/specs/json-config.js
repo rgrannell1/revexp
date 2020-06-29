@@ -1,17 +1,6 @@
 
 const spec = {}
 
-spec.value = {
-  oneOf: [
-    spec.string,
-    spec.number,
-    spec.array,
-    'true',
-    'false',
-    'null'
-  ]
-}
-
 spec.string = {
   every: [
     '"',
@@ -30,22 +19,6 @@ spec.string = {
 
 spec.whitespace = {
   oneOf: ['\s', '\n', '\r\n', '\t']
-}
-
-spec.exponent = {
-  every: [
-    ...spec.number.every,
-    {
-      oneOf: ['e', 'E']
-    },
-    {
-      repeat: {
-        value: { digit: {} },
-        from: 1,
-        to: 2
-      }
-    }
-  ]
 }
 
 spec.number = {
@@ -77,11 +50,46 @@ spec.number = {
   ]
 }
 
+spec.exponent = {
+  every: [
+    ...spec.number.every,
+    {
+      oneOf: ['e', 'E']
+    },
+    {
+      repeat: {
+        value: { digit: {} },
+        from: 1,
+        to: 2
+      }
+    }
+  ]
+}
+
 spec.array = {
   every: [
     '[',
-    spec.value,
+      {
+        ref: 'value'
+      },
     ']'
+  ]
+}
+
+spec.value = {
+  oneOf: [
+    {
+      ref: 'string'
+    },
+    {
+      ref: 'number'
+    },
+    {
+      ref: 'array'
+    },
+    'true',
+    'false',
+    'null'
   ]
 }
 

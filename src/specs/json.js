@@ -11,28 +11,6 @@ const characters = require('../characters')
  */
 const json = {}
 
-json.array = () => {
-  return logic.and([
-    characters.literal('['),
-    logic.and([
-      json.value,
-      // -- TODO add comma delimiting
-    ]),
-    characters.literal(']')
-  ])()
-}
-
-json.value = () => {
-  return logic.or([
-    json.string,
-    json.number,
-    json.array,
-    characters.literal('true'),
-    characters.literal('false'),
-    characters.literal('null')
-  ])()
-}
-
 json.string = () => {
   const specials = classes.oneOf([
     '\\"',
@@ -103,5 +81,27 @@ json.number = logic.or([
     ]))
   ])
 ])
+
+json.value = () => {
+  return logic.or([
+    json.string,
+    json.number,
+    json.array,
+    characters.literal('true'),
+    characters.literal('false'),
+    characters.literal('null')
+  ])()
+}
+
+json.array = () => {
+  return logic.and([
+    characters.literal('['),
+    logic.and([
+      json.value,
+      // -- TODO add comma delimiting
+    ]),
+    characters.literal(']')
+  ])()
+}
 
 module.exports = json
