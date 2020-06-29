@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "test": "npx tap",
-    "run:watch": "ls src/*.js | entr -s 'node src/interface.js'"
+    "run:watch": "ls src/*.js | entr -s 'node index.js'"
   },
   "dependencies": {
     "@rgrannell/errors": "^9.1.0",

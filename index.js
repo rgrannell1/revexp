@@ -1,12 +1,5 @@
 
-const { RevExp } = require('./src/interface')
+const interfaces = require('./src/interface')
+const spec = require('./src/specs/json-config')
 
-const val = new RevExp()
-  .or([
-    'aaa',
-    new RevExp().or('bccc', 'cxxx'),
-    RevExp.any()
-  ])
-  .build()
-
-console.log(val())
+interfaces.json(spec, spec.array)
