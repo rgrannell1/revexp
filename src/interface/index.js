@@ -3,6 +3,7 @@ const errors = require('@rgrannell/errors')
 
 const { codes } = require('../commons/constants')
 const random = require('../random')
+const classes = require('../character-classes')
 const characters = require('../characters')
 const quantifiers = require('../quantifiers')
 const checkSchema = require('../commons/json-schema')
@@ -77,11 +78,7 @@ json.oneOf = (spec, part) => {
 }
 
 json.notOneOf = (spec, part) => {
-  for (const elem of part.notOneOf) {
-  }
-
-
-  throw 'x'
+  return classes.notOneOf(part.notOneOf)()
 }
 
 json.range = (spec, part) => {
@@ -100,7 +97,6 @@ json.ref = (spec, part) => {
 }
 
 json.repeat = (spec, part) => {
-
   let from = part.repeat.from
   if (!part.repeat.hasOwnProperty('from')) {
     from = 0
