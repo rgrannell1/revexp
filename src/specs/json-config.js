@@ -69,15 +69,80 @@ spec.exponent = {
 spec.array = {
   every: [
     '[',
-      {
-        ref: 'value'
-      },
+    {
+      optional: {
+        every: [
+          {
+            ref: 'value'
+          },
+          {
+            repeat: {
+              value: {
+                every: [
+                  ', ',
+                  {
+                    ref: 'value'
+                  }
+                ]
+              },
+              from: 0,
+              to: 3
+            }
+          }
+        ]
+      }
+    },
     ']'
+  ]
+}
+
+spec.property = {
+  ref: 'string'
+}
+
+spec.object = {
+  every: [
+    '{',
+    {
+      optional: {
+        every: [
+          {
+            ref: 'property'
+          },
+          ': ',
+          {
+            ref: 'value'
+          },
+          {
+            repeat: {
+              value: {
+                every: [
+                  ', ',
+                  {
+                    ref: 'property'
+                  },
+                  ': ',
+                  {
+                    ref: 'value'
+                  },
+                ]
+              },
+              from: 0,
+              to: 3
+            }
+          }
+        ]
+      }
+    },
+    '}'
   ]
 }
 
 spec.value = {
   oneOf: [
+    {
+      ref: 'object'
+    },
     {
       ref: 'string'
     },
