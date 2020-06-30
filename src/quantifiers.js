@@ -85,4 +85,18 @@ quantifiers.onceOrNone = (gen, opts) => {
     : () => ''
 }
 
+quantifiers.repeat = (gen, opts) => {
+  return () => {
+    const repeatCount = Math.floor(Math.random() * (opts.to - opts.from)) + opts.from
+
+    let word = ''
+
+    for (let ith = 0; ith < repeatCount; ++ith) {
+      word += gen()
+    }
+
+    return word
+  }
+}
+
 module.exports = quantifiers

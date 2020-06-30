@@ -48,4 +48,8 @@ random.oneOf = elems => {
   }
 }
 
+random.range = (from, to) => {
+
+}
+
 module.exports = random

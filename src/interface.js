@@ -2,9 +2,12 @@
 const errors = require('@rgrannell/errors')
 
 const { codes } = require('./constants')
+const random = require('./random')
+const characters = require('./characters')
 const classes = require('./character-classes')
 const logic = require('./logic')
 const char = require('./characters')
+const quantifiers = require('./quantifiers')
 const retree = require('regexp-tree')
 
 const interfaces = {}
@@ -51,6 +54,15 @@ assert.type = (val, type, name) => {
 
 
 
+const types = {}
+
+types.every = {
+
+}
+
+
+
+
 interfaces.json = (spec, part) => {
   const supported = Object.keys(interfaces.json)
 
@@ -60,8 +72,7 @@ interfaces.json = (spec, part) => {
 
   for (const prop of supported) {
     if (part.hasOwnProperty(prop)) {
-      interfaces.json[prop](spec, part)
-      return
+      return interfaces.json[prop](spec, part)
     }
   }
 
@@ -76,32 +87,39 @@ interfaces.json = (spec, part) => {
 interfaces.json.every = (spec, part) => {
   assert.exactProperties(part, ['every'])
 
+  message = ''
+
   for (const elem of part.every) {
-    interfaces.json(spec, elem)
+    const subresult = interfaces.json(spec, elem)
+    message += subresult
   }
+
+  return message
 }
 
 interfaces.json.any = (spec, part) => {
   assert.exactProperties(part, ['any'])
   assert.type(part.any, 'object', 'any')
 
+  throw 'x'
 }
 
 interfaces.json.digit = (spec, part) => {
   assert.type(part.digit, 'object', 'digit')
 
   if (part.digit.hasOwnProperty('zero')) {
-    assert.type(part.digit, 'boolean', 'zero')
+    assert.type(part.digit.zero, 'boolean', 'zero')
   }
 
+  return part.digit.zero
+    ? characters.digit()
+    : characters.nonZeroDigit()
 }
 
 interfaces.json.oneOf = (spec, part) => {
   assert.type(part.oneOf, 'array', 'oneOf')
 
-  for (const elem of part.oneOf) {
-    interfaces.json(spec, elem)
-  }
+  return interfaces.json(spec, random.oneOf(part.oneOf))
 }
 
 interfaces.json.notOneOf = (spec, part) => {
@@ -109,9 +127,10 @@ interfaces.json.notOneOf = (spec, part) => {
 
   for (const elem of part.notOneOf) {
     assert.type(elem, 'string', 'notOneOf elem')
-
   }
 
+
+  throw 'x'
 }
 
 interfaces.json.range = (spec, part) => {
@@ -119,34 +138,52 @@ interfaces.json.range = (spec, part) => {
   assert.exactProperties(part.range, ['range'])
 
   assert.type(part.range, 'array', 'range')
+  throw 'x'
 }
 
 interfaces.json.ref = (spec, part) => {
   assert.type(part, 'object', 'ref')
   assert.exactProperties(part, ['ref'])
 
-  if (spec.hasOwnProperty(part.ref)) {
-    const refVal = spec[part.ref]
-
-    return interfaces.json(spec, refVal)
-  } else {
+  if (!spec.hasOwnProperty(part.ref)) {
     const specProps = Object.keys(spec)
     throw errors.badConfig(`reference "${part.ref}" does not exist in spec ${fmt.list(specProps)}`)
   }
+
+  const refVal = spec[part.ref]
+  return interfaces.json(spec, refVal)
 }
 
 interfaces.json.repeat = (spec, part) => {
   assert.type(part.repeat, 'object', 'repeat')
 
+  let from = part.repeat.from
+  if (!part.repeat.hasOwnProperty('from')) {
+    from = 0
+  }
 
+  let to = part.repeat.to
+  if (!part.repeat.hasOwnProperty('to')) {
+    to = 10
+  }
+
+  const gen = () => interfaces.json(spec, part.repeat.value)
+  const repeated = quantifiers.repeat(gen, {from, to})
+
+  return repeated()
+}
+
+interfaces.json.optional = (spec, part) => {
+  assert.type(part.optional, 'object', 'optional')
+
+  const gen = interfaces.json(spec, part.optional)
+  const optional = quantifiers.repeat(gen, { from: 0, to: 1 })
+
+  return optional()
 }
 
 interfaces.json.literal = (spec, part) => {
   return part
 }
-
-
-
-
 
 module.exports = interfaces
