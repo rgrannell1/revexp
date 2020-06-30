@@ -91,7 +91,7 @@ quantifiers.repeat = (gen, opts) => {
 
     let word = ''
 
-    for (let ith = 0; ith < repeatCount; ++ith) {
+    for (let ith = 0; ith <= repeatCount; ++ith) {
       word += gen()
     }
 

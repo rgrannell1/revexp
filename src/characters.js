@@ -4,7 +4,7 @@ const random = require('./random')
 const {
   ranges,
   rangeSets
-} = require('./constants')
+} = require('./commons/constants')
 
 const characters = {}
 

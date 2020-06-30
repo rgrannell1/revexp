@@ -1,5 +1,5 @@
 
-const { ranges } = require('./constants')
+const { ranges } = require('./commons/constants')
 const random = require('./random')
 
 const classes = {}

@@ -6,10 +6,11 @@
   "license": "MIT",
   "scripts": {
     "test": "npx tap",
-    "run:watch": "ls src/*.js | entr -s 'node index.js'"
+    "run:watch": "find src | entr -s 'node index.js'"
   },
   "dependencies": {
     "@rgrannell/errors": "^9.1.0",
+    "jsonschema": "^1.2.6",
     "regexp-tree": "^0.1.21",
     "typescript": "^3.9.3"
   },
