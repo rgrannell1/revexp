@@ -30,7 +30,13 @@ tests.jsonParses = (name, gen) => {
 }
 
 const cases = [
-  ['json.object', json.object]
+  ['json.object', json.object],
+  ['json.string', json.string],
+  ['json.number', json.number],
+  ['json.exponent', json.exponent],
+  ['json.number', json.number],
+  ['json.array', json.array],
+  ['json.value', json.value]
 ]
 
 for (const [name, config] of cases) {
