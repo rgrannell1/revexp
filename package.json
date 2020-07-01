@@ -5,7 +5,8 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "test": "npx tap --coverage-report=text-lcov | codecov -t $CODECOV_TOKEN",
+    "test": "npx tap",
+    "test:cov": "npx tap --coverage-report=text-lcov | codecov -t $CODECOV_TOKEN",
     "run:watch": "find src | entr -s 'node index.js'"
   },
   "dependencies": {
