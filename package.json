@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "test": "npx tap",
-    "test:cov": "npx tap --coverage-report=report-lcov | codecov",
+    "test:cov": "npx nyc --reporter=lcov npm run test; codecov -f coverage",
     "run:watch": "find src | entr -s 'node index.js'"
   },
   "dependencies": {
