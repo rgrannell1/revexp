@@ -1,28 +1,28 @@
 
 const tap = require('tap')
-const json = require('../src/specs/json')
+const json = require('../src/specs/json-config')
+const interface = require('../src/interface')
 const tools = require('../src/tools')
+const interfaces = require('../src/interface')
 
-const summariseCases = failures => {
-  const entry = failures[failures.length - 1]
-  return JSON.stringify({entry}, null, 2)
+const summariseCases = entry => {
+  return JSON.stringify(entry, null, 2)
 }
 
 const tests = {}
 
 tests.jsonParses = (name, gen) => {
-  const failures = tools.shrink({
+  const failure = tools.shrink({
     test(str) {
       JSON.parse(str)
     },
     gen,
-    all: true,
     until: tools.shrink.until.timeElapsed(2_000)
   })
 
-  if (failures.length > 0) {
-    const message = `expected zero failing cases, found ${failures.length}:` +
-      summariseCases(failures)
+  if (failure) {
+    const message = `expected zero failing cases\n\n:` +
+      summariseCases(failure)
     throw new Error(message)
   } else {
     tap.pass(`${name} parse correctly.`)
@@ -30,13 +30,9 @@ tests.jsonParses = (name, gen) => {
 }
 
 const cases = [
-  ['json.exponent', json.exponent],
-  ['json.number', json.number],
-  ['json.string', json.string],
-  ['json.value', json.value],
-  ['json.array', json.array]
+  ['json.object', json.object]
 ]
 
-for (const [name, gen] of cases) {
-  tests.jsonParses(name, gen)
+for (const [name, config] of cases) {
+  tests.jsonParses(name, () => interface.json(json, config))
 }

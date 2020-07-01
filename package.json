@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@rgrannell/errors": "^9.1.0",
+    "diff": "^4.0.2",
     "jsonschema": "^1.2.6",
     "regexp-tree": "^0.1.21",
     "typescript": "^3.9.3"
