@@ -6,15 +6,14 @@
   "license": "MIT",
   "scripts": {
     "test": "npx tap",
-    "test:cov": "npx nyc --reporter=lcov npm run test; codecov -f coverage",
+    "test:cov": "npx nyc --reporter=lcov npm run test; chromium coverage/lcov-report/index.html",
     "run:watch": "find src | entr -s 'node index.js'"
   },
   "dependencies": {
     "@rgrannell/errors": "^9.1.0",
-    "diff": "^4.0.2",
-    "jsonschema": "^1.2.6",
-    "regexp-tree": "^0.1.21",
-    "typescript": "^3.9.3"
+    "diff": "4.0.2",
+    "jsonschema": "1.2.6",
+    "regexp-tree": "0.1.21"
   },
   "devDependencies": {
     "@types/node": "^14.0.5",

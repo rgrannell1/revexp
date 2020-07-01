@@ -98,15 +98,13 @@ tests.sample = () => {
   }
 
   repeat(() => {
-    const result = random.sample({ ranges: [0] }) === random.sample({ ranges: [0, 1] })
+    const sample0 = random.sample({ ranges: [[0]] })
+    const sample1 = random.sample({ ranges: [[0, 1]] })
 
-    if (!result) {
-      throw new Error('two results should be equivalent')
+    if (sample0 !== sample1) {
+      throw new Error(`${sample0} was not equal to ${sample1}.`)
     }
-
   }, 10_000)
-
-
 }
 
 tests.range()
