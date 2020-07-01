@@ -1,5 +1,4 @@
 
-const chalk = require('chalk')
 const jsdiff = require('diff')
 
 const diff = {}

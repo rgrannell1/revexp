@@ -42,7 +42,7 @@ spec.string = {
     {
       repeat: {
         value: {
-          notOneOf: ['\\', '\"', '\/', '\b', '\f', '\n', '\r', '\t', ...hexes]
+          notOneOf: ['\\', '"', '/', '\b', '\f', '\n', '\r', '\t', ...hexes]
         },
         from: 0,
         to: 256
@@ -53,7 +53,7 @@ spec.string = {
 }
 
 spec.whitespace = {
-  oneOf: ['\s', '\n', '\r\n', '\t']
+  oneOf: [' ', '\n', '\r\n', '\t']
 }
 
 spec.number = {

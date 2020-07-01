@@ -1,6 +1,5 @@
 
 const classes = require('./character-classes')
-const random = require('./random')
 const {
   ranges,
   rangeSets

@@ -1,6 +1,7 @@
 
 const tap = require('tap')
 const { repeat } = require('../src/quantifiers')
+const characters = require('../src/characters')
 
 const tests = {}
 
@@ -13,7 +14,7 @@ tests.runsWithoutError = () => {
     characters.space()()
     characters.literal('a')()
     characters.nonLineBreak()()
-  }, 10_000)
+  }, 10000)
 
   tap.pass('all characters yield without errors')
 }

@@ -10,7 +10,7 @@ const gen = () => interfaces.json(spec, spec.object)
 const res = tools.shrink({
   test,
   gen,
-  until: tools.shrink.until.timeElapsed(300 * 1_000)
+  until: tools.shrink.until.timeElapsed(300000)
 })
 
 if (res) {
@@ -22,8 +22,6 @@ if (res) {
 
   console.log('\n\n\ndiff:')
   tools.diff.show(mutated.invalid, mutated.valid)
-
 } else {
   console.log('no failures!')
 }
-

@@ -1,5 +1,5 @@
 
-mutateString = str => {
+const mutateString = str => {
   if (!str) {
     return str
   }
@@ -27,7 +27,7 @@ const mutate = ({ test, str, until }) => {
   while (true) {
     state.count++
     try {
-      mutant = mutateString(str)
+      const mutant = mutateString(str)
 
       test(mutant)
 

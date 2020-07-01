@@ -12,16 +12,19 @@ const characters = require('../characters')
 const json = {}
 
 json.string = () => {
-  const specials = classes.oneOf([
-    '\\"',
-    '\\',
-    '\\/',
-    '\\b',
-    '\\f',
-    '\\n',
-    '\\r',
-    '\\t'
-  ])
+  /**
+   const specials = classes.oneOf([
+     '\\"',
+     '\\',
+     '\\/',
+     '\\b',
+     '\\f',
+     '\\n',
+     '\\r',
+     '\\t'
+   ])
+   */
+
   const doubleString = chars.literal('"')
   const normalCodepoint = classes.notOneOf([
     '\\"',
@@ -36,7 +39,7 @@ json.string = () => {
     // -- tmp
     '"',
     '\\',
-    '\/'
+    '/'
   ])
   const character = logic.or([
     normalCodepoint
@@ -51,7 +54,7 @@ json.string = () => {
 }
 
 json.whitespace = classes.oneOf([
-  '\s',
+  ' ',
   '\n',
   '\r\n',
   '\t'

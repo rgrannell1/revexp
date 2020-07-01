@@ -1,6 +1,5 @@
 
 const random = require('./random')
-const { codes } = require('./commons/constants')
 
 const logic = {}
 

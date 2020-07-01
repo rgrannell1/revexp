@@ -6,15 +6,8 @@ const random = require('../random')
 const classes = require('../character-classes')
 const characters = require('../characters')
 const quantifiers = require('../quantifiers')
-const checkSchema = require('../commons/json-schema')
 
 const interfaces = {}
-
-const assert = {}
-
-const is = val => {
-  return Object.prototype.toString.call(val).slice(8, -1).toLowerCase()
-}
 
 const format = {}
 
@@ -78,13 +71,13 @@ json.notOneOf = (spec, part) => {
 }
 
 json.range = (spec, part) => {
-  throw 'x'
+  throw new Error('not implemented.')
 }
 
 json.ref = (spec, part) => {
   if (!spec.hasOwnProperty(part.ref)) {
     const specProps = Object.keys(spec)
-    throw errors.badConfig(`reference "${part.ref}" does not exist in spec ${fmt.list(specProps)}`)
+    throw errors.badConfig(`reference "${part.ref}" does not exist in spec ${format.list(specProps)}`)
   }
 
   const refVal = spec[part.ref]

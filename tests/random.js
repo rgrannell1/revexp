@@ -1,9 +1,6 @@
 
 const tap = require('tap')
-const json = require('../src/specs/json-config')
-const interface = require('../src/interface')
-const tools = require('../src/tools')
-const { test } = require('tap')
+const iface = require('../src/interface')
 const random = require('../src/random')
 
 const tests = {}
@@ -26,7 +23,7 @@ tests.range = () => {
       if (!set.has(result)) {
         throw new Error(`returned invalid result: ${result} was not in ${[...set]}`)
       }
-    }, 10_000)
+    }, 10000)
 
     tap.pass(`range ${from}...${to} tests passed`)
   }
@@ -53,7 +50,7 @@ tests.oneOf = () => {
         throw new Error(`${elem} not in ${[...tcase]}`)
       }
     }
-  }, 10_000)
+  }, 10000)
 }
 
 tests.coinFlip = () => {
@@ -63,7 +60,7 @@ tests.coinFlip = () => {
     if (result !== true && result !== false) {
       throw new Error(`non-boolean result ${result} from random.coinFlip()`)
     }
-  }, 10_000)
+  }, 10000)
 }
 
 tests.sample = () => {
