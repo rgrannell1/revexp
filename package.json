@@ -5,7 +5,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "test": "npx tap",
+    "test": "npx tap --coverage-report=text-lcov | codecov -t $CODECOV_TOKEN",
     "run:watch": "find src | entr -s 'node index.js'"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@types/node": "^14.0.5",
+    "codecov": "^3.7.0",
     "tap": "^14.10.7"
   }
 }

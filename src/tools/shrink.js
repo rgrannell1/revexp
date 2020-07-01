@@ -43,10 +43,6 @@ const shrink = ({ test, gen, all, until }) => {
         ? state.sequence
         : state.min
     }
-
-    if (state.count % 1000 === 0) {
-      console.log(`[count=${state.count}, len=${state.min?.length}]`)
-    }
   }
 }
 

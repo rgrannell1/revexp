@@ -10,21 +10,21 @@ const random = {}
  */
 random.sample = opts => {
   if (opts.chars) {
-    const idx = Math.floor(Math.random() * opts.chars.length)
-
-    return opts.chars[idx]
+    return random.oneOf(opts.chars)
   } else if (opts.ranges) {
-    const ith = Math.floor(Math.random() * opts.ranges.length)
+    if (!opts?.ranges?.length > 0) {
+      throw new Error('ranges should have one or more elements.')
+    }
 
+    const ith = Math.floor(Math.random() * opts.ranges.length)
     const range = opts.ranges[ith]
 
     let [lower, upper] = range
     if (typeof upper === 'undefined') {
       upper = lower + 1
     }
-    const idx = Math.floor(Math.random() * (upper - lower)) + lower
 
-    return String.fromCharCode(idx)
+    return String.fromCharCode(random.range(lower, upper))
   } else {
     throw new Error('invalid options provided.')
   }
@@ -40,7 +40,7 @@ random.coinFlip = () => {
 }
 
 random.oneOf = elems => {
-  if (!elems) {
+  if (!elems || elems.length === 0) {
     return undefined
   } else {
     const idx = Math.floor(Math.random() * elems.length)
@@ -49,7 +49,7 @@ random.oneOf = elems => {
 }
 
 random.range = (from, to) => {
-
+  return Math.floor(Math.random() * (to - from)) + from
 }
 
 module.exports = random
