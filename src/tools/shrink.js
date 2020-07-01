@@ -1,5 +1,5 @@
 
-const handleError = ({all, state, candidates}) => {
+const handleError = ({ all, state, candidates }) => {
   const minCandidate = candidates.reduce((min, current) => {
     return current.length < min.length
       ? current
@@ -34,7 +34,7 @@ const shrink = ({ test, gen, all, until }) => {
       handleError({
         state,
         all,
-        candidates: [ newGen ]
+        candidates: [newGen]
       })
     }
 

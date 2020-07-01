@@ -4,7 +4,7 @@ const constants = {
     // -- get your game on.
     ALL_CHARS: [0x000, 0x10ffff],
     DIGITS: [48, 57],
-    NONZERO_DIGITS: [49, 57],
+    NONZERO_DIGITS: [49, 57]
   },
   rangeSets: {
     SPACES: [

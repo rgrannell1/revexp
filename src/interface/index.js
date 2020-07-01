@@ -26,10 +26,6 @@ format.obj = obj => {
   return JSON.stringify(obj, null, 2)
 }
 
-
-
-
-
 const json = (spec, part) => {
   const supported = Object.keys(json)
 
@@ -43,7 +39,7 @@ const json = (spec, part) => {
     }
   }
 
-  const message = `the config object below does not use a supported config method\n` +
+  const message = 'the config object below does not use a supported config method\n' +
     format.obj(part) +
    '\n\n' +
     'valid properties are ' + supported.map(val => `'${val}'`).join(', ')
@@ -86,7 +82,6 @@ json.range = (spec, part) => {
 }
 
 json.ref = (spec, part) => {
-
   if (!spec.hasOwnProperty(part.ref)) {
     const specProps = Object.keys(spec)
     throw errors.badConfig(`reference "${part.ref}" does not exist in spec ${fmt.list(specProps)}`)
@@ -108,7 +103,7 @@ json.repeat = (spec, part) => {
   }
 
   const gen = () => json(spec, part.repeat.value)
-  const repeated = quantifiers.repeat(gen, {from, to})
+  const repeated = quantifiers.repeat(gen, { from, to })
 
   return repeated()
 }

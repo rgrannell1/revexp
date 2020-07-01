@@ -36,17 +36,17 @@ json.string = () => {
     // -- tmp
     '"',
     '\\',
-    '\/',
+    '\/'
   ])
   const character = logic.or([
-    normalCodepoint,
-    //specials
+    normalCodepoint
+    // specials
   ])
 
   return logic.and([
     doubleString,
     quants.zeroOrMoreRepeat(character),
-    doubleString,
+    doubleString
   ])()
 }
 
@@ -66,7 +66,7 @@ json.exponent = logic.and([
   ])),
   classes.oneOf(['e', 'E']),
   quants.onceOrNone(chars.literal('-')),
-  quants.oneOrMoreRepeat(chars.digit, {to: 2})
+  quants.oneOrMoreRepeat(chars.digit, { to: 2 })
 ])
 
 json.number = logic.or([
@@ -97,7 +97,7 @@ json.array = () => {
   return logic.and([
     characters.literal('['),
     logic.and([
-      json.value,
+      json.value
       // -- TODO add comma delimiting
     ]),
     characters.literal(']')

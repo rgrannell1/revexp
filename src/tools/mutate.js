@@ -17,7 +17,7 @@ mutateString = str => {
   return message
 }
 
-const mutate = ({test, str, until}) => {
+const mutate = ({ test, str, until }) => {
   const startTime = Date.now()
 
   const state = {
@@ -44,7 +44,5 @@ const mutate = ({test, str, until}) => {
     }
   }
 }
-
-
 
 module.exports = mutate

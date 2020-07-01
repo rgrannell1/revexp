@@ -147,7 +147,7 @@ spec.object = {
                   ', ',
                   { ref: 'property' },
                   ': ',
-                  { ref: 'value' },
+                  { ref: 'value' }
                 ]
               },
               from: 0,

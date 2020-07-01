@@ -50,7 +50,7 @@ classes.notOneOf = seqs => {
  *
  */
 classes.range = ranges => {
-  return random.sample({ranges})
+  return random.sample({ ranges })
 }
 
 /**
@@ -60,7 +60,7 @@ classes.range = ranges => {
  * @param {num} opts.to
  *
  */
-classes.notRange = ({from, to}) => {
+classes.notRange = ({ from, to }) => {
 
 }
 
