@@ -30,25 +30,12 @@ characters.nonZeroDigit = () => {
 }
 
 /**
- * Return a word-character
- *
- * @return {number} return a character
- */
-characters.wordChar = () => {
-  return classes.range({
-    ranges: rangeSets.WORD_CHAR
-  })
-}
-
-/**
  * Return a unicode space-character
  *
  * @return {number} return a character
  */
 characters.space = () => {
-  return classes.range({
-    ranges: rangeSets.SPACES
-  })
+  return classes.range(rangeSets.SPACES)
 }
 
 /**

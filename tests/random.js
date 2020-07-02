@@ -2,14 +2,9 @@
 const tap = require('tap')
 const iface = require('../src/interface')
 const random = require('../src/random')
+const utils = require('./utils/index')
 
 const tests = {}
-
-const repeat = (fn, num) => {
-  for (let ith = 0; ith < num; ++ith) {
-    fn()
-  }
-}
 
 tests.range = () => {
   const cases = [
@@ -18,7 +13,7 @@ tests.range = () => {
   ]
 
   for (const [from, to, set] of cases) {
-    repeat(() => {
+    utils.repeat(() => {
       const result = random.range(1, 1)
       if (!set.has(result)) {
         throw new Error(`returned invalid result: ${result} was not in ${[...set]}`)
@@ -42,7 +37,7 @@ tests.oneOf = () => {
     new Set([0, 1, 3])
   ]
 
-  repeat(() => {
+  utils.repeat(() => {
     for (tcase of cases) {
       const elem = random.oneOf([...tcase])
 
@@ -54,7 +49,7 @@ tests.oneOf = () => {
 }
 
 tests.coinFlip = () => {
-  repeat(() => {
+  utils.repeat(() => {
     let result = random.coinFlip()
 
     if (result !== true && result !== false) {
@@ -94,7 +89,7 @@ tests.sample = () => {
     }
   }
 
-  repeat(() => {
+  utils.repeat(() => {
     const sample0 = random.sample({ ranges: [[0]] })
     const sample1 = random.sample({ ranges: [[0, 1]] })
 

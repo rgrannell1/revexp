@@ -1,7 +1,7 @@
 
 const tap = require('tap')
 const quantifiers = require('../src/quantifiers')
-const { repeat } = require('../src/quantifiers')
+const utils = require('./utils/index')
 
 const tests = {}
 
@@ -14,7 +14,7 @@ tests.repeat = () => {
   ]
 
   for (const [from, to] of cases) {
-    repeat(() => {
+    utils.repeat(() => {
       const repeated = quantifiers.repeat(() => 'a', { from, to })()
 
       if (repeated.length > to) {

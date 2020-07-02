@@ -1,6 +1,6 @@
 
 const mutateString = str => {
-  if (!str) {
+  if (!str || str.length === 0) {
     return str
   }
 
@@ -40,9 +40,11 @@ const mutate = ({ test, str, until }) => {
     }
 
     if (until(state.count, startTime)) {
-      throw new Error(`count not find healthy mutant in ${Date.now() - startTime} ms.`)
+      throw new Error(`could not find healthy mutant in ${Date.now() - startTime} ms.`)
     }
   }
 }
+
+mutate.string = mutateString
 
 module.exports = mutate
