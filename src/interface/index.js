@@ -19,7 +19,8 @@ format.obj = obj => {
   return JSON.stringify(obj, null, 2)
 }
 
-const hasOwnProperty = Object.prototype.hasOwnProperty
+// eslint-disable-next-line no-prototype-builtins
+const hasOwnProperty = (obj, prop) => obj.hasOwnProperty(prop)
 
 const json = (spec, part) => {
   const supported = Object.keys(json)
