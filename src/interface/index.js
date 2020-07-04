@@ -19,6 +19,8 @@ format.obj = obj => {
   return JSON.stringify(obj, null, 2)
 }
 
+const hasOwnProperty = Object.prototype.hasOwnProperty
+
 const json = (spec, part) => {
   const supported = Object.keys(json)
 
@@ -27,7 +29,7 @@ const json = (spec, part) => {
   }
 
   for (const prop of supported) {
-    if (part.hasOwnProperty(prop)) {
+    if (hasOwnProperty(part, prop)) {
       return json[prop](spec, part)
     }
   }
@@ -75,7 +77,7 @@ json.range = (spec, part) => {
 }
 
 json.ref = (spec, part) => {
-  if (!spec.hasOwnProperty(part.ref)) {
+  if (!hasOwnProperty(spec, part.ref)) {
     const specProps = Object.keys(spec)
     throw errors.badConfig(`reference "${part.ref}" does not exist in spec ${format.list(specProps)}`)
   }
@@ -86,12 +88,12 @@ json.ref = (spec, part) => {
 
 json.repeat = (spec, part) => {
   let from = part.repeat.from
-  if (!part.repeat.hasOwnProperty('from')) {
+  if (!hasOwnProperty(part.repeat, 'from')) {
     from = 0
   }
 
   let to = part.repeat.to
-  if (!part.repeat.hasOwnProperty('to')) {
+  if (!hasOwnProperty(part.repeat, 'to')) {
     to = 10
   }
 

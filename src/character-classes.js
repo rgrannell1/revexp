@@ -53,15 +53,4 @@ classes.range = ranges => {
   return random.sample({ ranges })
 }
 
-/**
- * Return characters not in a range
- *
- * @param {num} opts.from
- * @param {num} opts.to
- *
- */
-classes.notRange = ({ from, to }) => {
-
-}
-
 module.exports = classes

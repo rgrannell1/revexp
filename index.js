@@ -1,4 +1,6 @@
 
+Error.stackTraceLimit = Infinity
+
 const tools = require('./src/tools')
 
 const interfaces = require('./src/interface/')
