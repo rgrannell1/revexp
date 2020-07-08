@@ -11,13 +11,12 @@
     "run:watch": "find src | entr -s 'node index.js'"
   },
   "dependencies": {
-    "@rgrannell/errors": "^9.1.0",
-    "diff": "4.0.2",
-    "jsonschema": "1.2.6",
-    "regexp-tree": "0.1.21"
+    "@rgrannell/errors": "^9.2.0",
+    "diff": "4.0.2"
   },
   "devDependencies": {
-    "@types/node": "^14.0.5",
+    "@rgrannell/depcheck": "^9.3.0",
+    "@rgrannell/pulp": "^9.2.0",
     "chai": "^4.2.0",
     "codecov": "^3.7.0",
     "standard": "^14.3.4",
