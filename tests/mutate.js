@@ -32,7 +32,6 @@ tests.mutate = () => {
       until: () => true
     })
   }).to.throw('could not find')
-
 }
 
 tests.mutateString()

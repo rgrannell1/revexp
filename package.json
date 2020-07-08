@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "test": "npx tap",
+    "pulp": "node pulpfile.js",
     "standard": "npx standard --fix",
     "test:cov": "npx nyc --reporter=lcov npm run test; chromium coverage/lcov-report/index.html",
     "run:watch": "find src | entr -s 'node index.js'"
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@rgrannell/depcheck": "^9.3.0",
+    "@rgrannell/lint": "^9.4.0",
     "@rgrannell/pulp": "^9.2.0",
     "chai": "^4.2.0",
     "codecov": "^3.7.0",

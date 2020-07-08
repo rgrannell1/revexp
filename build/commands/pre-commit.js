@@ -1,7 +1,8 @@
 
 const command = {
   name: 'pre-commit',
-  dependencies: ['lint', 'depcheck']
+  // -- note: linting is disabled for the moment
+  dependencies: ['depcheck']
 }
 
 command.cli = `
