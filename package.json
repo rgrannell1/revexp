@@ -19,7 +19,20 @@
     "@rgrannell/pulp": "^9.2.0",
     "chai": "^4.2.0",
     "codecov": "^3.7.0",
+    "husky": "^4.2.5",
     "standard": "^14.3.4",
     "tap": "^14.10.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pulp pre-commit"
+    }
+  },
+  "nyc": {
+    "exclude": [
+      "build/**",
+      "pulpfile.js",
+      "**/tests"
+    ]
   }
 }
