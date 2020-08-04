@@ -1,12 +1,12 @@
 
-import * as classes from './character-classes'
+import * as classes from './character-classes.js'
 import {
   ranges,
   rangeSets
-} from './commons/constants'
+} from './commons/constants.js'
 import {
   Generator
-} from './types'
+} from './types.js'
 
 export const any = () => {
   return classes.range([ranges.ALL_CHARS])

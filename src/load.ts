@@ -1,40 +1,19 @@
 
-import * as random from "./random"
-import * as characters from "./characters"
-import * as classes from "./character-classes"
-
-interface Every {
-  every: any[]
-}
-
-interface Digit {
-  digit: {
-    zero?: Boolean
-  }
-}
-
-interface Repeat {
-  value: Config,
-  min?: number
-  max?: number
-}
-
-interface OneOf {
-  oneOf: Config[]
-}
-
-interface NotOneOf {
-  notOneOf: string[]
-}
-
-interface Ref {
-  ref: string
-}
-
-
-interface Optional {
-  value: Config
-}
+import * as random from "./random.js"
+import * as characters from "./characters.js"
+import * as classes from "./character-classes.js"
+import {
+  Config,
+  Digit,
+  Every,
+  NotOneOf,
+  OneOf,
+  Optional,
+  Ref,
+  Repeat,
+  Spec,
+  Stack
+} from "./commons/types"
 
 const every = (stack:Stack, part:Every) => {
   part.every.forEach(item => {
@@ -43,7 +22,7 @@ const every = (stack:Stack, part:Every) => {
 }
 
 const isEvery = (candidate:any): candidate is Every => {
-  return candidate.hasOwnProperty('every')
+  return candidate && candidate.hasOwnProperty('every')
 }
 
 const digit = (stack:Stack, part:Digit) => {
@@ -55,31 +34,42 @@ const digit = (stack:Stack, part:Digit) => {
 }
 
 const isDigit = (candidate:any): candidate is Digit => {
-  return candidate.hasOwnProperty('digit')
+  return candidate && candidate.hasOwnProperty('digit')
 }
 
 const isRepeat = (candidate:any): candidate is Repeat => {
-  return candidate.hasOwnProperty('repeat')
+  return candidate && candidate.hasOwnProperty('repeat')
 }
 
 const isNotOneOf = (candidate:any): candidate is NotOneOf => {
-  return candidate.hasOwnProperty('notOneOf')
+  return candidate && candidate.hasOwnProperty('notOneOf')
 }
 
 const isOneOf = (candidate:any): candidate is OneOf => {
-  return candidate.hasOwnProperty('oneOf')
+  return candidate && candidate.hasOwnProperty('oneOf')
 }
 
 const isOptional = (candidate:any): candidate is Optional => {
-  return candidate.hasOwnProperty('optional')
+  return candidate && candidate.hasOwnProperty('optional')
 }
 
 const isRef = (candidate:any): candidate is Ref => {
-  return candidate.hasOwnProperty('ref')
+  return candidate && candidate.hasOwnProperty('ref')
 }
 
 const repeat = (stack:Stack, part:Repeat) => {
+  if (typeof part.min === 'undefined' || typeof part.max === 'undefined') {
+    return
+  }
+  if (part.min === 0 && part.max === 0) {
+    return
+  }
 
+  const repeatCount = random.range(part.min, part.max)
+
+  for (let ith = 0; ith <= repeatCount; ++ith) {
+    stack.push(part.value)
+  }
 }
 
 const notOneOf = (stack:Stack, part:NotOneOf) => {
@@ -88,30 +78,17 @@ const notOneOf = (stack:Stack, part:NotOneOf) => {
 }
 
 const oneOf = (stack:Stack, part:OneOf) => {
-  const subpart = random.oneOf(part)
-  stack.push(subpart)
+  stack.push(random.oneOf(part))
 }
 
 const optional = (stack:Stack, part:Optional) => {
-
+  if (random.coinFlip()) {
+    stack.push(part.optional)
+  }
 }
 
 const ref = (spec:Spec, stack:Stack, part:Ref) => {
   stack.push(spec[part.ref])
-}
-
-type Config = 
-  Digit    | 
-  Every    | 
-  Repeat   | 
-  NotOneOf |
-  OneOf    |
-  Optional |
-  Ref 
-
-type Stack = Config[]
-type Spec = {
-  [key:string]: Config
 }
 
 const load = (spec:Spec, part:Config) => {
@@ -135,10 +112,12 @@ const load = (spec:Spec, part:Config) => {
       optional(stack, item)
     } else if (isRef(item)) {
       ref(spec, stack, item)
+    } else if (typeof item === 'string') {
+      parts.push(item)
     }
   }
 
-  return parts.join('')
+  return parts.reverse().join('')
 }
 
 export default load 

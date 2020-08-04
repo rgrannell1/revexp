@@ -5,5 +5,6 @@ import * as spec from './specs/json-config.js'
 const gen = () => load(spec, spec.object)
 
 while (true) {
-  gen()
+  const val = gen()
+  console.log(val)
 }

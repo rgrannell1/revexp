@@ -1,11 +1,11 @@
 
-import { ranges } from './commons/constants'
-import * as random from './random'
+import { ranges } from './commons/constants.js'
+import * as random from './random.js'
 
 import {
   Generator,
   GeneratorThunk
-} from './types'
+} from './types.js'
 
 // -- get your game on.
 
