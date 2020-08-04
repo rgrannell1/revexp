@@ -1,7 +1,9 @@
 
-const random = require('./random')
+import * as random from './random'
 
-const logic = {}
+import {
+  Generator
+} from './types'
 
 /**
  * Return one of the provided generators
@@ -11,7 +13,7 @@ const logic = {}
  * @returns {Function} a generator
  *
  */
-logic.or = gens => {
+export const or = (gens:Generator[]) => {
   const gen = random.oneOf(gens)
 
   if (!gen) {
@@ -29,7 +31,7 @@ logic.or = gens => {
  * @returns {Function} a generator
  *
  */
-logic.and = gens => {
+export const and = (gens:Generator[]) => {
   gens.forEach(gen => {
     if (typeof gen !== 'function') {
       throw new Error(`generator was not a function: ${gen}`)
@@ -40,5 +42,3 @@ logic.and = gens => {
     return gens.map(gen => gen()).join('')
   }
 }
-
-module.exports = logic

@@ -1,9 +1,16 @@
 
-const random = require('./random')
+import * as random from './random'
 
-const quantifiers = {}
+import {
+  Generator
+} from './types'
 
-quantifiers.repeat = (gen, opts) => {
+interface RepeatOpts {
+  from: number
+  to: number
+}
+
+export const repeat = (gen:Generator, opts:RepeatOpts) => {
   return () => {
     if (opts.from === 0 && opts.to === 0) {
       return ''
@@ -19,5 +26,3 @@ quantifiers.repeat = (gen, opts) => {
     return word
   }
 }
-
-module.exports = quantifiers

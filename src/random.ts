@@ -1,5 +1,12 @@
 
-const random = {}
+export const range = (from:number, to:number):number => {
+  return Math.floor(Math.random() * (to - from)) + from
+}
+
+interface SampleOpts {
+  chars: string[] | undefined,
+  ranges: number[][] | undefined
+}
 
 /**
  * return a random character.
@@ -8,23 +15,18 @@ const random = {}
  *
  * @return {string} a random character.
  */
-random.sample = opts => {
+export const sample = (opts:Partial<SampleOpts>) => {
   if (opts.chars) {
-    return random.oneOf(opts.chars)
+    return oneOf(opts.chars)
   } else if (opts.ranges) {
-    if (!opts?.ranges?.length > 0) {
-      throw new Error('ranges should have one or more elements.')
-    }
-
     const ith = Math.floor(Math.random() * opts.ranges.length)
-    const range = opts.ranges[ith]
 
-    let [lower, upper] = range
+    let [lower, upper] = opts.ranges[ith]
     if (typeof upper === 'undefined') {
       upper = lower + 1
     }
 
-    return String.fromCharCode(random.range(lower, upper))
+    return String.fromCharCode(range(lower, upper))
   } else {
     throw new Error('invalid options provided.')
   }
@@ -35,21 +37,15 @@ random.sample = opts => {
  *
  * @return {boolean} a true-false value
  */
-random.coinFlip = () => {
-  return random.oneOf([true, false])
+export const coinFlip = () => {
+  return oneOf([true, false])
 }
 
-random.oneOf = elems => {
+export const oneOf = (elems:any) => {
   if (!elems || elems.length === 0) {
-    return undefined
+    throw new Error('no elements provided; cannot choose between them.')
   } else {
     const idx = Math.floor(Math.random() * elems.length)
     return elems[idx]
   }
 }
-
-random.range = (from, to) => {
-  return Math.floor(Math.random() * (to - from)) + from
-}
-
-module.exports = random

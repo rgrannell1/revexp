@@ -1,9 +1,9 @@
 
-const logic = require('../logic')
-const classes = require('../character-classes')
-const quants = require('../quantifiers')
-const chars = require('../characters')
-const characters = require('../characters')
+import * as logic from '../logic'
+import * as classes from '../character-classes'
+import * as quants from '../quantifiers'
+import * as chars from '../characters'
+import * as characters from '../characters'
 
 /**
  * Based on https://www.json.org/json-en.html
@@ -11,7 +11,7 @@ const characters = require('../characters')
  */
 const json = {}
 
-json.string = () => {
+export const string = () => {
   /**
    const specials = classes.oneOf([
      '\\"',
@@ -53,14 +53,14 @@ json.string = () => {
   ])()
 }
 
-json.whitespace = classes.oneOf([
+export const whitespace = classes.oneOf([
   ' ',
   '\n',
   '\r\n',
   '\t'
 ])
 
-json.exponent = logic.and([
+export const exponent = logic.and([
   chars.nonZeroDigit,
   quants.zeroOrMoreRepeat(chars.digit, { to: 9 }),
   quants.onceOrNone(logic.and([
@@ -72,8 +72,8 @@ json.exponent = logic.and([
   quants.oneOrMoreRepeat(chars.digit, { to: 2 })
 ])
 
-json.number = logic.or([
-  json.exponent,
+export const number = logic.or([
+  exponent,
   logic.and([
     quants.onceOrNone(chars.literal('-')),
     chars.nonZeroDigit,
@@ -85,26 +85,24 @@ json.number = logic.or([
   ])
 ])
 
-json.value = () => {
+export const value = () => {
   return logic.or([
-    json.string,
-    json.number,
-    json.array,
+    string,
+    number,
+    array,
     characters.literal('true'),
     characters.literal('false'),
     characters.literal('null')
   ])()
 }
 
-json.array = () => {
+export const array = () => {
   return logic.and([
     characters.literal('['),
     logic.and([
-      json.value
+      value
       // -- TODO add comma delimiting
     ]),
     characters.literal(']')
   ])()
 }
-
-module.exports = json

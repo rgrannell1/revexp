@@ -1,8 +1,11 @@
 
-const { ranges } = require('./commons/constants')
-const random = require('./random')
+import { ranges } from './commons/constants'
+import * as random from './random'
 
-const classes = {}
+import {
+  Generator,
+  GeneratorThunk
+} from './types'
 
 // -- get your game on.
 
@@ -11,7 +14,7 @@ const classes = {}
  *
  * @param {Array<Object>} gens
  */
-classes.oneOf = gens => {
+export const oneOf = (gens:Array<Generator | string>):GeneratorThunk => {
   return () => random.oneOf(gens)
 }
 
@@ -23,15 +26,15 @@ classes.oneOf = gens => {
  *
  *
  */
-classes.notOneOf = seqs => {
+export const notOneOf = (seqs:string[]) => {
   return () => {
-    let char = classes.range([ranges.ALL_CHARS])
+    let char = range([ranges.ALL_CHARS])
 
     while (true) {
       // -- update char until one that isn't in seqs is created
       // -- potentially non-terminating.
       if (seqs.includes(char)) {
-        char = classes.range([ranges.ALL_CHARS])
+        char = range([ranges.ALL_CHARS])
       } else {
         break
       }
@@ -49,8 +52,6 @@ classes.notOneOf = seqs => {
  *
  *
  */
-classes.range = ranges => {
+export const range = (ranges:number[][]) => {
   return random.sample({ ranges })
 }
-
-module.exports = classes

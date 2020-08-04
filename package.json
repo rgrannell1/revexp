@@ -1,10 +1,12 @@
 {
   "name": "revexp",
+  "type": "module",
   "version": "1.0.0",
   "description": "",
   "author": "",
   "license": "MIT",
   "scripts": {
+    "tsc": "tsc",
     "test": "npx tap",
     "pulp": "node pulpfile.js",
     "standard": "npx standard --fix",
@@ -23,7 +25,8 @@
     "codecov": "^3.7.0",
     "husky": "^4.2.5",
     "standard": "^14.3.4",
-    "tap": "^14.10.7"
+    "tap": "^14.10.7",
+    "typescript": "^3.9.7"
   },
   "husky": {
     "hooks": {

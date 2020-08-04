@@ -34,9 +34,7 @@ const hexes = [
   '\x1F'
 ]
 
-const spec = {}
-
-spec.string = {
+export const string = {
   every: [
     '"',
     {
@@ -52,11 +50,11 @@ spec.string = {
   ]
 }
 
-spec.whitespace = {
+export const whitespace = {
   oneOf: [' ', '\n', '\r\n', '\t']
 }
 
-spec.number = {
+export const number = {
   every: [
     {
       digit: { zero: false }
@@ -85,9 +83,9 @@ spec.number = {
   ]
 }
 
-spec.exponent = {
+export const exponent = {
   every: [
-    ...spec.number.every,
+    ...number.every,
     {
       oneOf: ['e', 'E']
     },
@@ -101,7 +99,7 @@ spec.exponent = {
   ]
 }
 
-spec.array = {
+export const array = {
   every: [
     '[',
     {
@@ -127,11 +125,11 @@ spec.array = {
   ]
 }
 
-spec.property = {
+export const property = {
   ref: 'string'
 }
 
-spec.object = {
+export const object = {
   every: [
     '{',
     {
@@ -161,7 +159,7 @@ spec.object = {
   ]
 }
 
-spec.value = {
+export const value = {
   oneOf: [
     { ref: 'object' },
     { ref: 'string' },
@@ -172,5 +170,3 @@ spec.value = {
     'null'
   ]
 }
-
-module.exports = spec

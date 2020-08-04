@@ -1,13 +1,14 @@
 
-const classes = require('./character-classes')
-const {
+import * as classes from './character-classes'
+import {
   ranges,
   rangeSets
-} = require('./commons/constants')
+} from './commons/constants'
+import {
+  Generator
+} from './types'
 
-const characters = {}
-
-characters.any = () => {
+export const any = () => {
   return classes.range([ranges.ALL_CHARS])
 }
 
@@ -16,7 +17,7 @@ characters.any = () => {
  *
  * @return {number} return a digit
  */
-characters.digit = () => {
+export const digit = () => {
   return classes.range([ranges.DIGITS])
 }
 
@@ -25,7 +26,7 @@ characters.digit = () => {
  *
  * @return {number} return a digit
  */
-characters.nonZeroDigit = () => {
+export const nonZeroDigit = () => {
   return classes.range([ranges.NONZERO_DIGITS])
 }
 
@@ -34,7 +35,7 @@ characters.nonZeroDigit = () => {
  *
  * @return {number} return a character
  */
-characters.space = () => {
+export const space = () => {
   return classes.range(rangeSets.SPACES)
 }
 
@@ -43,7 +44,7 @@ characters.space = () => {
  *
  * @return {number} the provided data
  */
-characters.literal = str => {
+export const literal = (str:string):Generator => {
   return () => str
 }
 
@@ -52,8 +53,6 @@ characters.literal = str => {
  *
  * @return {number} return a character
  */
-characters.nonLineBreak = () => {
+export const nonLineBreak = () => {
   return classes.notOneOf(['\n'])
 }
-
-module.exports = characters
