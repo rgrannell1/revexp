@@ -58,17 +58,17 @@ const isRef = (candidate:any): candidate is Ref => {
 }
 
 const repeat = (stack:Stack, part:Repeat) => {
-  if (typeof part.min === 'undefined' || typeof part.max === 'undefined') {
+  if (typeof part.repeat.from === 'undefined' && typeof part.repeat.to === 'undefined') {
     return
   }
-  if (part.min === 0 && part.max === 0) {
+  if (part.repeat.from === 0 && part.repeat.to === 0) {
     return
   }
 
-  const repeatCount = random.range(part.min, part.max)
+  const repeatCount = random.range(part.repeat.from || 0, part.repeat.to || 256)
 
   for (let ith = 0; ith <= repeatCount; ++ith) {
-    stack.push(part.value)
+    stack.push(part.repeat.value)
   }
 }
 
@@ -112,7 +112,7 @@ const load = (spec:Spec, part:Config) => {
       optional(stack, item)
     } else if (isRef(item)) {
       ref(spec, stack, item)
-    } else if (typeof item === 'string') {
+    } else if (typeof item === 'string' || typeof item === 'number') {
       parts.push(item)
     }
   }

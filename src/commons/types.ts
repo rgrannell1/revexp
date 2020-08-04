@@ -10,9 +10,11 @@ export interface Digit {
 }
 
 export interface Repeat {
-  value: Config,
-  min?: number
-  max?: number
+  repeat: {
+    value: Config,
+    from?: number
+    to?: number
+  }
 }
 
 export interface OneOf {
