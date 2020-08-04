@@ -115,7 +115,7 @@ export const array = {
                 ]
               },
               from: 0,
-              to: 3
+              to: 100
             }
           }
         ]
@@ -149,7 +149,7 @@ export const object = {
                 ]
               },
               from: 0,
-              to: 3
+              to: 100
             }
           }
         ]
