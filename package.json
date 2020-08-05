@@ -22,7 +22,7 @@
     "@rgrannell/lint": "^9.4.0",
     "@rgrannell/pulp": "^9.2.0",
     "chai": "^4.2.0",
-    "codecov": "^3.7.0",
+    "codecov": "^3.7.1",
     "husky": "^4.2.5",
     "standard": "^14.3.4",
     "tap": "^14.10.7",
