@@ -7,4 +7,4 @@ utils.repeat = (fn, num) => {
   }
 }
 
-module.exports = utils
+export default utils

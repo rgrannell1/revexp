@@ -1,6 +1,5 @@
 {
   "name": "revexp",
-  "type": "module",
   "version": "1.0.0",
   "description": "",
   "author": "",
@@ -15,6 +14,7 @@
   },
   "dependencies": {
     "@rgrannell/errors": "^9.2.0",
+    "@types/diff": "^4.0.2",
     "diff": "4.0.2"
   },
   "devDependencies": {
@@ -27,11 +27,6 @@
     "standard": "^14.3.4",
     "tap": "^14.10.7",
     "typescript": "^3.9.7"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run pulp pre-commit"
-    }
   },
   "nyc": {
     "exclude": [

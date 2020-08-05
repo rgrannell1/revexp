@@ -12,7 +12,7 @@ const gen = () => interfaces.json(spec, spec.object)
 const res = tools.shrink({
   test,
   gen,
-  until: tools.shrink.until.timeElapsed(300000)
+  until: tools.shrink.until.timeElapsed(3000)
 })
 
 if (res) {

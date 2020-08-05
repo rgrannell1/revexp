@@ -1,8 +1,8 @@
 
-const tap = require('tap')
-const json = require('../src/specs/json-config')
-const iface = require('../src/interface')
-const tools = require('../src/tools')
+import * as tap from 'tap'
+import * as json from '../src/specs/json-config'
+import load from '../src/load'
+import tools from '../src/tools'
 
 const summariseCases = entry => {
   return JSON.stringify(entry, null, 2)
@@ -39,5 +39,5 @@ const cases = [
 ]
 
 for (const [name, config] of cases) {
-  tests.jsonParses(name, () => iface.json(json, config))
+  tests.jsonParses(name, () => load(json, config))
 }
