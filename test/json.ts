@@ -1,6 +1,7 @@
 
 import * as tap from 'tap'
-import * as json from '../src/specs/json-config'
+
+import * as json from '../src/json/'
 import load from '../src/load'
 import tools from '../src/tools'
 
@@ -12,7 +13,7 @@ const tests = {}
 
 tests.jsonParses = (name, gen) => {
   const failure = tools.shrink({
-    test (str) {
+    test(str) {
       JSON.parse(str)
     },
     gen,

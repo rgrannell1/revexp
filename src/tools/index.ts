@@ -3,7 +3,7 @@ import * as diff from './diff.js'
 import mutate from './mutate.js'
 import shrink from './shrink.js'
 
-const tools = { 
+const tools = {
   diff,
   mutate,
   shrink

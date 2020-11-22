@@ -1,5 +1,5 @@
 
-const mutateString = (str:string) => {
+const mutateString = (str: string) => {
   if (!str || str.length === 0) {
     return str
   }
@@ -23,7 +23,7 @@ interface MutateOpts {
   until: Function
 }
 
-const mutate = ({ test, str, until}: MutateOpts) => {
+const mutate = ({ test, str, until }: MutateOpts) => {
   const startTime = Date.now()
 
   const state = {

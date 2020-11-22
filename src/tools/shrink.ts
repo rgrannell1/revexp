@@ -7,13 +7,13 @@ interface State {
 }
 
 interface HandleErrorOpts {
-  all: Boolean 
+  all: Boolean
   state: State
   candidates: any
 }
 
 const handleError = ({ all, state, candidates }: HandleErrorOpts) => {
-  const minCandidate = candidates.reduce((min:any, current:any) => {
+  const minCandidate = candidates.reduce((min: any, current: any) => {
     return current.length < min.length
       ? current
       : min
@@ -35,7 +35,7 @@ interface ShrinkOpts {
   until: Function
 }
 
-const shrink = ({ test, gen, all, until }:ShrinkOpts) => {
+const shrink = ({ test, gen, all, until }: ShrinkOpts) => {
   const startTime = Date.now()
   const state = {
     count: 0,
@@ -67,10 +67,10 @@ const shrink = ({ test, gen, all, until }:ShrinkOpts) => {
 }
 
 shrink.until = {
-  count: (target:number) => (count:number) => {
+  count: (target: number) => (count: number) => {
     return count >= target
   },
-  timeElapsed: (target:number) => (count:number, start:number) => {
+  timeElapsed: (target: number) => (count: number, start: number) => {
     return Date.now() >= (start + target)
   }
 }
