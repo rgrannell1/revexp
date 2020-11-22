@@ -1,4 +1,12 @@
 
+const constants = {
+  MAX_STRING_LENGTH: 256,
+  MAX_WHOLE_PART_LENGTH: 10,
+  MAX_DECIMAL_PART: 10,
+  MAX_ARRAY_LENGTH: 10,
+  MAX_OBJECT_PROPERTIES: 10
+}
+
 const hexes = [
   '\x00',
   '\x01',
@@ -43,7 +51,7 @@ export const string = {
           notOneOf: ['\\', '"', '/', '\b', '\f', '\n', '\r', '\t', ...hexes]
         },
         from: 0,
-        to: 256
+        to: constants.MAX_STRING_LENGTH
       }
     },
     '"'
@@ -63,7 +71,7 @@ export const number = {
       repeat: {
         value: { digit: {} },
         from: 0,
-        to: 10
+        to: constants.MAX_WHOLE_PART_LENGTH
       }
     },
     {
@@ -74,7 +82,7 @@ export const number = {
             repeat: {
               value: { digit: {} },
               from: 1,
-              to: 10
+              to: constants.MAX_DECIMAL_PART
             }
           }
         ]
@@ -115,7 +123,7 @@ export const array = {
                 ]
               },
               from: 0,
-              to: 100
+              to: constants.MAX_ARRAY_LENGTH
             }
           }
         ]
@@ -149,7 +157,7 @@ export const object = {
                 ]
               },
               from: 0,
-              to: 100
+              to: constants.MAX_OBJECT_PROPERTIES
             }
           }
         ]
