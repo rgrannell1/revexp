@@ -16,9 +16,7 @@ import {
 } from "./types"
 
 const every = (stack: Stack, part: Every) => {
-  part.every.forEach(item => {
-    stack.push(item)
-  })
+  stack.push(...part.every)
 }
 
 const isEvery = (candidate: any): candidate is Every => {
@@ -78,7 +76,7 @@ const notOneOf = (stack: Stack, part: NotOneOf) => {
 }
 
 const oneOf = (stack: Stack, part: OneOf) => {
-  stack.push(random.oneOf(part))
+  stack.push(random.oneOf(part.oneOf))
 }
 
 const optional = (stack: Stack, part: Optional) => {

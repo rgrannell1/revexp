@@ -2,7 +2,7 @@
 import * as random from './random'
 import {
   StringThunk
-} from './core/commons/types'
+} from './commons/types'
 
 interface RepeatOpts {
   from: number,

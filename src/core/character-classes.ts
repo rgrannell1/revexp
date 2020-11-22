@@ -1,9 +1,9 @@
 
 import * as random from './random.js'
-import constants from './core/commons/constants.js'
+import constants from './commons/constants.js'
 import {
   Stringish
-} from './core/commons/types'
+} from './commons/types'
 
 export const oneOf = (gens: Stringish[]): () => Stringish => {
   return () => random.oneOf(gens)
@@ -20,6 +20,8 @@ export const notOneOf = (seqs:string[]) => {
         break
       }
     }
+
+    return char
   }
 }
 

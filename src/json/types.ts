@@ -40,7 +40,8 @@ export type Config =
   NotOneOf |
   OneOf |
   Optional |
-  Ref
+  Ref |
+  string
 
 export type Stack = Config[]
 export type Spec = {

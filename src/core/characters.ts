@@ -1,9 +1,9 @@
 
 import * as classes from './character-classes.js'
-import constants from './core/commons/constants.js'
+import constants from './commons/constants.js'
 import {
   StringThunk
-} from './core/commons/types.js'
+} from './commons/types.js'
 
 export const any = () => {
   return classes.range([constants.ranges.ALL_CHARS])

@@ -33,14 +33,15 @@ export interface Optional {
   optional: Config
 }
 
-export type Config = 
-  Digit    | 
-  Every    | 
-  Repeat   | 
+export type Config =
+  Digit    |
+  Every    |
+  Repeat   |
   NotOneOf |
   OneOf    |
   Optional |
-  Ref 
+  Ref      |
+  string
 
 export type Stack = Config[]
 export type Spec = {

@@ -26,3 +26,7 @@ export const sample = (ranges:number[][]) => {
 
   return String.fromCharCode(range(lower, upper))
 }
+
+export const coinFlip = () => {
+  return Math.random() >= 0.5
+}
