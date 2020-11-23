@@ -11,7 +11,7 @@ Reverse regular-expression generator.
 
 ```
 src/
-  core/
+  core/                     core revexp api.
     commons/
       constants.ts
       types.ts
@@ -20,12 +20,12 @@ src/
     logic.ts
     quantifers.ts
     random.ts
-    
+
   json/
     builder.ts
-    spec.ts
+    spec.ts                  json specification in terms of generator objects
     types.ts
-    
+
   tools/
     evolve.ts
     index.ts

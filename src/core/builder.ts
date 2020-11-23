@@ -13,7 +13,7 @@ import {
   Repeat,
   Spec,
   Stack
-} from "./types"
+} from "./commons/types"
 
 const every = (stack: Stack, part: Every) => {
   stack.push(...part.every)

@@ -1,7 +1,7 @@
 
 import tap from 'tap'
 import tools from '../src/tools/index.js'
-import builder from '../src/json/builder.js'
+import builder from '../src/core/builder.js'
 import * as jsonSpec from '../src/json/spec.js'
 
 const summariseCases = <I>(entry:I) => {
