@@ -3,6 +3,12 @@
 
 Reverse regular-expression generator.
 
+### Usage
+
+```ts
+
+```
+
 ### Stability Index
 
 1, Experimental - This project might die, it's undertested and underdocumented, and redesigns and breaking changes are likely
@@ -13,23 +19,22 @@ Reverse regular-expression generator.
 src/
   core/                     core revexp api.
     commons/
-      constants.ts
-      types.ts
-    character-classes.ts
-    characters.ts
-    logic.ts
-    quantifers.ts
-    random.ts
+      constants.ts           library constants
+      types.ts               library types
+    character-classes.ts     create character groupings.
+    characters.ts            character generators.
+    logic.ts                 and / or operations for generators.
+    quantifers.ts            create multiple instances of a generator.
+    random.ts                random utilities.
+    builder.ts               creates a revexp from JSON configuration.
 
   json/
-    builder.ts
     spec.ts                  json specification in terms of generator objects
-    types.ts
 
   tools/
-    evolve.ts
+    evolve.ts                try to turn an invalid revexp into a valid one. Used to identify problematic areas of the input.
     index.ts
-    shrink.ts
+    shrink.ts                find a minimal failing revexp string.
 ```
 
 ### Generators

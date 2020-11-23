@@ -1,4 +1,4 @@
-import * as random from './random';
+import * as random from './random.js';
 export const repeat = (th, opts) => {
     return () => {
         if (opts.from === 0 && opts.to === 0) {

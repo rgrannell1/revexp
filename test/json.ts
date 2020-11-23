@@ -1,8 +1,6 @@
 
 import tap from 'tap'
-import tools from '../src/tools/index.js'
-import builder from '../src/core/builder.js'
-import * as jsonSpec from '../src/json/spec.js'
+import * as revexp from '../src/revexp.js'
 
 const summariseCases = <I>(entry:I) => {
   return JSON.stringify(entry, null, 2)
@@ -15,12 +13,12 @@ interface Tests {
 const tests:Tests = {}
 
 tests.jsonParses = (name:string, th:Function) => {
-  const failure = tools.shrink({
+  const failure = revexp.tools.shrink({
     test(str:string) {
       JSON.parse(str)
     },
     gen: th,
-    until: tools.shrink.until.timeElapsed(2000),
+    until: revexp.tools.shrink.until.timeElapsed(20_000),
     all: false
   })
 
@@ -28,20 +26,20 @@ tests.jsonParses = (name:string, th:Function) => {
     const message = 'expected zero failing cases\n\n:' + summariseCases(failure)
     throw new Error(message)
   } else {
-    tap.pass('JSON parsed successfully.')
+    tap.pass(`${name} JSON parsed successfully.`)
   }
 }
 
 const cases = [
-  ['json.object', jsonSpec.object],
-  ['json.string', jsonSpec.string],
-  ['json.number', jsonSpec.number],
-  ['json.exponent', jsonSpec.exponent],
-  ['json.number', jsonSpec.number],
-  ['json.array', jsonSpec.array],
-  ['json.value', jsonSpec.value]
+  ['json.object', revexp.jsonSpec.object],
+  ['json.string', revexp.jsonSpec.string],
+  ['json.number', revexp.jsonSpec.number],
+  ['json.exponent', revexp.jsonSpec.exponent],
+  ['json.number', revexp.jsonSpec.number],
+  ['json.array', revexp.jsonSpec.array],
+  ['json.value', revexp.jsonSpec.value]
 ]
 
 for (const [name, config] of cases) {
-  tests.jsonParses(name, () => builder(jsonSpec, config))
+  tests.jsonParses(name, () => revexp.builder(revexp.jsonSpec, config))
 }

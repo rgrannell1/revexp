@@ -28,7 +28,7 @@ const handleError = ({ all, state, candidates }: HandleErrorOpts) => {
   }
 }
 
-interface ShrinkOpts {
+export interface ShrinkOpts {
   test: Function
   gen: Function
   all: Boolean

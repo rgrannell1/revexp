@@ -1,18 +1,16 @@
 import tap from 'tap';
-import tools from '../src/tools/index.js';
-import builder from '../src/core/builder.js';
-import * as jsonSpec from '../src/json/spec.js';
+import * as revexp from '../src/revexp.js';
 const summariseCases = (entry) => {
     return JSON.stringify(entry, null, 2);
 };
 const tests = {};
 tests.jsonParses = (name, th) => {
-    const failure = tools.shrink({
+    const failure = revexp.tools.shrink({
         test(str) {
             JSON.parse(str);
         },
         gen: th,
-        until: tools.shrink.until.timeElapsed(2000),
+        until: revexp.tools.shrink.until.timeElapsed(20000),
         all: false
     });
     if (failure) {
@@ -20,18 +18,18 @@ tests.jsonParses = (name, th) => {
         throw new Error(message);
     }
     else {
-        tap.pass('JSON parsed successfully.');
+        tap.pass(`${name} JSON parsed successfully.`);
     }
 };
 const cases = [
-    ['json.object', jsonSpec.object],
-    ['json.string', jsonSpec.string],
-    ['json.number', jsonSpec.number],
-    ['json.exponent', jsonSpec.exponent],
-    ['json.number', jsonSpec.number],
-    ['json.array', jsonSpec.array],
-    ['json.value', jsonSpec.value]
+    ['json.object', revexp.jsonSpec.object],
+    ['json.string', revexp.jsonSpec.string],
+    ['json.number', revexp.jsonSpec.number],
+    ['json.exponent', revexp.jsonSpec.exponent],
+    ['json.number', revexp.jsonSpec.number],
+    ['json.array', revexp.jsonSpec.array],
+    ['json.value', revexp.jsonSpec.value]
 ];
 for (const [name, config] of cases) {
-    tests.jsonParses(name, () => builder(jsonSpec, config));
+    tests.jsonParses(name, () => revexp.builder(revexp.jsonSpec, config));
 }

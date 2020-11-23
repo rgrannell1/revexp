@@ -3,11 +3,13 @@
   "type": "module",
   "version": "1.0.0",
   "description": "Reverse regular-expression generator.",
+  "types": "dist/src/revexp.d.ts",
+  "main": "dist/src/revexp.js",
   "author": "Róisín Grannell <r.grannell2@gmail.com>",
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
-    "test": "npm run tsc; npx tap dist/test --no-esm",
+    "test": "npm run tsc && npx tap dist/test --no-esm --timeout 300",
     "standard": "npx standard --fix"
   },
   "dependencies": {

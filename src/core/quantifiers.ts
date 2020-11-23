@@ -1,10 +1,10 @@
 
-import * as random from './random'
+import * as random from './random.js'
 import {
   StringThunk
 } from './commons/types'
 
-interface RepeatOpts {
+export interface RepeatOpts {
   from: number,
   to: number
 }

@@ -1,4 +1,4 @@
-import * as random from './random';
+import * as random from './random.js';
 export const or = (ths) => {
     return random.oneOf(ths);
 };

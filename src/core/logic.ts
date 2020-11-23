@@ -1,5 +1,5 @@
 
-import * as random from './random'
+import * as random from './random.js'
 
 import {
   StringThunk

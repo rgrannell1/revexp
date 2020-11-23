@@ -23,7 +23,7 @@ export const mutateString = (str: string) => {
   return message
 }
 
-interface EvolveOpts {
+export interface EvolveOpts {
   test: Function
   str: string
   until: Function

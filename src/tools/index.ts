@@ -1,6 +1,6 @@
 
-import evolve from './evolve.js'
-import shrink from './shrink.js'
+import evolveFn from './evolve.js'
+import shrinkFn from './shrink.js'
 
 import * as jsdiff from 'diff'
 
@@ -15,10 +15,5 @@ export const diff = (str0: string, str1: string) => {
   console.log(strdiff)
 }
 
-const tools = {
-  diff,
-  mutate: evolve,
-  shrink
-}
-
-export default tools
+export const evolve = evolveFn
+export const shrink = shrinkFn
