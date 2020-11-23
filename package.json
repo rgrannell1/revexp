@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
-    "test": "npm run tsc; npx tap dist/test",
+    "test": "npm run tsc; npx tap dist/test --no-esm",
     "standard": "npx standard --fix"
   },
   "dependencies": {

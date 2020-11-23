@@ -1,5 +1,5 @@
 
-//import * as tap from 'tap'
+import tap from 'tap'
 import tools from '../src/tools/index.js'
 import builder from '../src/json/builder.js'
 import * as jsonSpec from '../src/json/spec.js'
@@ -9,7 +9,7 @@ const summariseCases = <I>(entry:I) => {
 }
 
 interface Tests {
-  [key: string]: any
+  [key: string]: (name:any, val:any) => void
 }
 
 const tests:Tests = {}
@@ -27,6 +27,8 @@ tests.jsonParses = (name:string, th:Function) => {
   if (failure) {
     const message = 'expected zero failing cases\n\n:' + summariseCases(failure)
     throw new Error(message)
+  } else {
+    tap.pass('JSON parsed successfully.')
   }
 }
 
