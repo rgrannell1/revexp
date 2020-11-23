@@ -3,7 +3,7 @@
     "allowJs": true,
     "moduleResolution": "node",
     "module": "ESNext",
-    "outDir": "out",
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "alwaysStrict": true,
@@ -12,6 +12,7 @@
   },
   "exclude": [
     "node_modules",
-    "out"
+    "dist",
+    "docs"
   ]
 }

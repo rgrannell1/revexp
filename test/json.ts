@@ -1,8 +1,6 @@
 
-import * as tap from 'tap'
-
-import tools from '../src/tools'
-
+//import * as tap from 'tap'
+import tools from '../src/tools/index.js'
 import builder from '../src/json/builder.js'
 import * as jsonSpec from '../src/json/spec.js'
 
@@ -27,11 +25,8 @@ tests.jsonParses = (name:string, th:Function) => {
   })
 
   if (failure) {
-    const message = 'expected zero failing cases\n\n:' +
-      summariseCases(failure)
+    const message = 'expected zero failing cases\n\n:' + summariseCases(failure)
     throw new Error(message)
-  } else {
-    tap.pass(`${name} parse correctly.`)
   }
 }
 
