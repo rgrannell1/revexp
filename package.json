@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
-    "test": "npm run tsc && npx tap dist/test --no-esm --timeout 300",
+    "test": "npm run tsc && npx tap dist/test --no-esm --no-coverage --timeout 300",
     "standard": "npx standard --fix"
   },
   "dependencies": {

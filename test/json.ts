@@ -18,7 +18,7 @@ tests.jsonParses = (name:string, th:Function) => {
       JSON.parse(str)
     },
     gen: th,
-    until: revexp.tools.shrink.until.timeElapsed(20_000),
+    until: revexp.tools.shrink.until.timeElapsed(10_000),
     all: false
   })
 

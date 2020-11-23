@@ -10,7 +10,7 @@ tests.jsonParses = (name, th) => {
             JSON.parse(str);
         },
         gen: th,
-        until: revexp.tools.shrink.until.timeElapsed(20000),
+        until: revexp.tools.shrink.until.timeElapsed(10000),
         all: false
     });
     if (failure) {
