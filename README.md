@@ -13,8 +13,23 @@ Reverse regular-expression generator.
 src/
   core/
     commons/
+      constants.ts
+      types.ts
+    character-classes.ts
+    characters.ts
+    logic.ts
+    quantifers.ts
+    random.ts
+    
   json/
+    builder.ts
+    spec.ts
+    types.ts
+    
   tools/
+    evolve.ts
+    index.ts
+    shrink.ts
 ```
 
 ### Generators
