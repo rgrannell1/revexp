@@ -1,5 +1,11 @@
 
-const mutateString = (str: string) => {
+/**
+ * Return a slightly modifier string.
+ *
+ * @param str
+ *
+ */
+export const mutateString = (str: string) => {
   if (!str || str.length === 0) {
     return str
   }
@@ -17,13 +23,18 @@ const mutateString = (str: string) => {
   return message
 }
 
-interface MutateOpts {
+interface EvolveOpts {
   test: Function
   str: string
   until: Function
 }
 
-const mutate = ({ test, str, until }: MutateOpts) => {
+/**
+ * Find a mutant that satisfies a test.
+ *
+ * @param param0
+ */
+const evolve = ({ test, str, until }: EvolveOpts) => {
   const startTime = Date.now()
 
   const state = {
@@ -51,6 +62,4 @@ const mutate = ({ test, str, until }: MutateOpts) => {
   }
 }
 
-mutate.string = mutateString
-
-export default mutate
+export default evolve

@@ -7,6 +7,16 @@ Reverse regular-expression generator.
 
 1, Experimental - This project might die, it's undertested and underdocumented, and redesigns and breaking changes are likely
 
+### Files
+
+```
+src/
+  core/
+    commons/
+  json/
+  tools/
+```
+
 ### Generators
 
 Generators are the building-blocks for reverse regular-expressions. A generator:

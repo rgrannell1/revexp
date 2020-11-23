@@ -1,23 +1,29 @@
 
 import * as tap from 'tap'
 
-import * as json from '../src/json/'
-import load from '../src/load'
 import tools from '../src/tools'
 
-const summariseCases = entry => {
+import builder from '../src/json/builder.js'
+import * as jsonSpec from '../src/json/spec.js'
+
+const summariseCases = <I>(entry:I) => {
   return JSON.stringify(entry, null, 2)
 }
 
-const tests = {}
+interface Tests {
+  [key: string]: any
+}
 
-tests.jsonParses = (name, gen) => {
+const tests:Tests = {}
+
+tests.jsonParses = (name:string, th:Function) => {
   const failure = tools.shrink({
-    test(str) {
+    test(str:string) {
       JSON.parse(str)
     },
-    gen,
-    until: tools.shrink.until.timeElapsed(2000)
+    gen: th,
+    until: tools.shrink.until.timeElapsed(2000),
+    all: false
   })
 
   if (failure) {
@@ -30,15 +36,15 @@ tests.jsonParses = (name, gen) => {
 }
 
 const cases = [
-  ['json.object', json.object],
-  ['json.string', json.string],
-  ['json.number', json.number],
-  ['json.exponent', json.exponent],
-  ['json.number', json.number],
-  ['json.array', json.array],
-  ['json.value', json.value]
+  ['json.object', jsonSpec.object],
+  ['json.string', jsonSpec.string],
+  ['json.number', jsonSpec.number],
+  ['json.exponent', jsonSpec.exponent],
+  ['json.number', jsonSpec.number],
+  ['json.array', jsonSpec.array],
+  ['json.value', jsonSpec.value]
 ]
 
 for (const [name, config] of cases) {
-  tests.jsonParses(name, () => load(json, config))
+  tests.jsonParses(name, () => builder(jsonSpec, config))
 }

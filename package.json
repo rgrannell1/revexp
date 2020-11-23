@@ -17,6 +17,7 @@
   "dependencies": {
     "@rgrannell/errors": "^9.2.0",
     "@types/diff": "^4.0.2",
+    "@types/tap": "^14.10.1",
     "diff": "4.0.2"
   },
   "devDependencies": {
