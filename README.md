@@ -10,10 +10,6 @@ Revexp can be called in two ways:
 - using a short builder-pattern series of functions
 - using a JSON-based specification documented below
 
-```ts
-
-```
-
 ### Stability Index
 
 1, Experimental - This project might die, it's undertested and underdocumented, and redesigns and breaking changes are likely
