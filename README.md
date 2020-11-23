@@ -5,6 +5,11 @@ Reverse regular-expression generator.
 
 ### Usage
 
+Revexp can be called in two ways:
+
+- using a short builder-pattern series of functions
+- using a JSON-based specification documented below
+
 ```ts
 
 ```
