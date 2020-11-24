@@ -1,7 +1,7 @@
 
 # revexp ![CI](https://github.com/rgrannell1/revexp/workflows/CI/badge.svg)
 
-Reverse regular-expression generator.
+Create endless random strings that match a pattern.
 
 ### Usage
 
@@ -37,15 +37,6 @@ src/
     index.ts
     shrink.ts                find a minimal failing revexp string.
 ```
-
-### Concept
-
-Generators are the building-blocks for reverse regular-expressions. A generator:
-
-- takes configuration options
-- generates a random string
-
-Combining generators allow complex data-structures to be created, like emails, phone-numbers, or structured syntax like JSON. A simple example is:
 
 ### Method-Based Generators
 
