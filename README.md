@@ -38,11 +38,7 @@ src/
     shrink.ts                find a minimal failing revexp string.
 ```
 
-### Method-Based Generators
-
-
-
-### JSON-Based Generators
+### Concept
 
 Generators are the building-blocks for reverse regular-expressions. A generator:
 
@@ -50,6 +46,70 @@ Generators are the building-blocks for reverse regular-expressions. A generator:
 - generates a random string
 
 Combining generators allow complex data-structures to be created, like emails, phone-numbers, or structured syntax like JSON. A simple example is:
+
+### Method-Based Generators
+
+#### `R.oneOf`
+```
+R.oneOf([ R.digit, R.nonZeroDigit ])
+```
+
+#### `R.notOneOf`
+```ts
+R.notOneOf([ 'a', 'b', '1' ])
+```
+
+#### `R.range`
+```ts
+R.range([[0, 100]])
+```
+
+#### `R.any`
+```ts
+R.any()
+```
+
+#### `R.digit`
+```ts
+R.digit()
+```
+
+#### `R.nonZeroDigit`
+```ts
+R.nonZeroDigit()
+```
+
+#### `R.space`
+```ts
+R.space()
+```
+
+#### `R.literal`
+```ts
+R.literal('a')
+```
+
+#### `R.nonLineBreak`
+```ts
+R.nonLineBreak()
+```
+
+#### `R.regexp`
+```ts
+R.regexp(/Mon|Tue/i)
+```
+
+#### `R.and`
+```ts
+R.and([ R.nonZeroDigit, '-', R.digit ])
+```
+
+#### `R.or`
+```ts
+R.or([ R.digit(), R.character() ])
+```
+
+### JSON-Based Generators
 
 ```ts
 const integerGen = revexp.builder({
