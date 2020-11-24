@@ -49,6 +49,10 @@ Combining generators allow complex data-structures to be created, like emails, p
 
 ### Method-Based Generators
 
+```ts
+const { parts: R } = revexp
+```
+
 #### `R.oneOf`
 ```
 R.oneOf([ R.digit, R.nonZeroDigit ])
