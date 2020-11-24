@@ -1,3 +1,4 @@
+import RandExp from 'randexp';
 import * as classes from './character-classes.js';
 import constants from './commons/constants.js';
 export const any = () => {
@@ -42,4 +43,16 @@ export const literal = (str) => {
  */
 export const nonLineBreak = () => {
     return classes.notOneOf(['\n']);
+};
+/**
+ * Return a literal character or character sequence
+ *
+ * @return {number} the provided data
+ */
+export const regexp = (re) => {
+    const compiled = new RandExp(re);
+    return () => {
+        // -- for now, just delegate to RandExp (which seems like a good module).
+        return compiled.gen();
+    };
 };

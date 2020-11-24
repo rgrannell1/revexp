@@ -37,14 +37,30 @@ src/
     shrink.ts                find a minimal failing revexp string.
 ```
 
-### Generators
+### Method-Based Generators
+
+
+
+### JSON-Based Generators
 
 Generators are the building-blocks for reverse regular-expressions. A generator:
 
 - takes configuration options
 - generates a random string
 
-Combining generators allow complex data-structures to be created, like emails, phone-numbers, or structured syntax like JSON.
+Combining generators allow complex data-structures to be created, like emails, phone-numbers, or structured syntax like JSON. A simple example is:
+
+```ts
+const integerGen = revexp.builder({
+  repeat: {
+    value: { digit: {} },
+    min: 0,
+    max: 10
+  }
+})
+
+integerGen()
+```
 
 #### `characters/any`
 

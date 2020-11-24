@@ -30,6 +30,7 @@ import {
   space,
   literal,
   nonLineBreak,
+  regexp
 } from './core/characters.js'
 
 import {
@@ -51,6 +52,7 @@ export const parts = {
   space,
   literal,
   nonLineBreak,
+  regexp,
   and,
   or,
   repeat

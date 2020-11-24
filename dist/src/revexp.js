@@ -9,7 +9,7 @@ export const tools = {
 export const jsonSpec = jsonPkg;
 export const builder = builderPkg;
 import { oneOf, notOneOf, range } from './core/character-classes.js';
-import { any, digit, nonZeroDigit, space, literal, nonLineBreak, } from './core/characters.js';
+import { any, digit, nonZeroDigit, space, literal, nonLineBreak, regexp } from './core/characters.js';
 import { and, or } from './core/logic.js';
 import { repeat } from './core/quantifiers.js';
 export const parts = {
@@ -22,6 +22,7 @@ export const parts = {
     space,
     literal,
     nonLineBreak,
+    regexp,
     and,
     or,
     repeat

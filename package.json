@@ -15,7 +15,8 @@
   "dependencies": {
     "@types/diff": "^4.0.2",
     "@types/tap": "^14.10.1",
-    "diff": "4.0.2"
+    "diff": "4.0.2",
+    "randexp": "^0.5.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",

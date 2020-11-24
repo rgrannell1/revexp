@@ -22,7 +22,10 @@ const shrink = ({ test, gen, all, until }) => {
         state.count++;
         const newGen = gen();
         try {
-            test(newGen);
+            const result = test(newGen);
+            if (result === false) {
+                throw new Error(`${newGen} failed test.`);
+            }
         }
         catch (err) {
             handleError({
