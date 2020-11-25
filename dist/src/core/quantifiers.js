@@ -4,10 +4,12 @@ export const repeat = (th, opts) => {
         if (opts.from === 0 && opts.to === 0) {
             return '';
         }
-        const repeatCount = random.range(opts.from, opts.to);
+        const repeatCount = opts.count
+            ? opts.count - 1
+            : random.range(opts.from, opts.to);
         let word = '';
         for (let ith = 0; ith <= repeatCount; ++ith) {
-            word += th();
+            word += typeof th === 'string' ? th : th();
         }
         return word;
     };

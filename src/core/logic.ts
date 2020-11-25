@@ -2,13 +2,21 @@
 import * as random from './random.js'
 
 import {
-  StringThunk
+  Stringish
 } from './commons/types'
 
-export const or = (ths: StringThunk[]) => {
-  return random.oneOf(ths)
+export const or = (ths: Stringish[]) => {
+  const res = random.oneOf(ths)
+
+  return typeof res === 'string'
+    ? () => res
+    : res
 }
 
-export const and = (ths: StringThunk[]) => {
-  return () => ths.map(th => th()).join('')
+export const and = (ths: Stringish[]) => {
+  return () => ths.map(th => {
+    return typeof th === 'string'
+      ? th
+      : th()
+  }).join('')
 }

@@ -1,7 +1,14 @@
 import * as random from './random.js';
 export const or = (ths) => {
-    return random.oneOf(ths);
+    const res = random.oneOf(ths);
+    return typeof res === 'string'
+        ? () => res
+        : res;
 };
 export const and = (ths) => {
-    return () => ths.map(th => th()).join('');
+    return () => ths.map(th => {
+        return typeof th === 'string'
+            ? th
+            : th();
+    }).join('');
 };
