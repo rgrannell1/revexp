@@ -49,8 +49,7 @@ Combining generators allow complex data-structures to be created, like emails, p
 
 ```ts
 const numberBlock = R.repeat(R.digit, { from: 4, to: 4 })
-const space = () => ' '
-const visaGen = R.and([numberBlock, space, numberBlock, space, numberBlock, space, numberBlock])
+const visaGen = R.and([numberBlock, ' ', numberBlock, ' ', numberBlock, ' ', numberBlock])
 
 visaGen()
 ```
