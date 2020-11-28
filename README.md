@@ -38,7 +38,6 @@ src/
     shrink.ts                find a minimal failing revexp string.
 ```
 
-<<<<<<< HEAD
 ### Concept
 
 Generators are the building-blocks for reverse regular-expressions. A generator:
@@ -55,9 +54,6 @@ const visaGen = R.and([numberBlock, space, numberBlock, space, numberBlock, spac
 
 visaGen()
 ```
-
-=======
->>>>>>> 01e7190973c8c214fb7b2900380ee8d4561af441
 ### Method-Based Generators
 
 ```ts
