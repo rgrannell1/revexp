@@ -48,7 +48,7 @@ Generators are the building-blocks for reverse regular-expressions. A generator:
 Combining generators allow complex data-structures to be created, like emails, phone-numbers, or structured syntax like JSON. A simple example is:
 
 ```ts
-const numberBlock = R.repeat(R.digit, { from: 4, to: 4 })
+const numberBlock = R.repeat(R.digit, { count: 4 })
 const visaGen = R.and([numberBlock, ' ', numberBlock, ' ', numberBlock, ' ', numberBlock])
 
 visaGen()
