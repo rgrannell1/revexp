@@ -1,6 +1,7 @@
 
 import evolveFn from './evolve.js'
 import shrinkFn from './shrink.js'
+import firehoseFn from './firehose.js'
 
 import * as jsdiff from 'diff'
 
@@ -17,3 +18,4 @@ export const diff = (str0: string, str1: string) => {
 
 export const evolve = evolveFn
 export const shrink = shrinkFn
+export const firehose = firehoseFn

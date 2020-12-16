@@ -16,3 +16,4 @@ export declare const shrink: {
         timeElapsed: (target: number) => (count: number, start: number) => boolean;
     };
 };
+export declare const firehose: (seconds: number) => Generator<number, void, unknown>;

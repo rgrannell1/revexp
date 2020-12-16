@@ -1,10 +1,11 @@
 import * as jsonPkg from './json/spec.js';
 import builderPkg from './core/builder.js';
-import { diff, evolve, shrink } from './tools/index.js';
+import { diff, evolve, shrink, firehose } from './tools/index.js';
 export const tools = {
     diff,
     evolve,
-    shrink
+    shrink,
+    firehose
 };
 export const jsonSpec = jsonPkg;
 export const builder = builderPkg;

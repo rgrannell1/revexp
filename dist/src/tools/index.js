@@ -1,5 +1,6 @@
 import evolveFn from './evolve.js';
 import shrinkFn from './shrink.js';
+import firehoseFn from './firehose.js';
 import * as jsdiff from 'diff';
 /**
  * Display a character diff
@@ -13,3 +14,4 @@ export const diff = (str0, str1) => {
 };
 export const evolve = evolveFn;
 export const shrink = shrinkFn;
+export const firehose = firehoseFn;

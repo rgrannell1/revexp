@@ -5,13 +5,15 @@ import builderPkg from './core/builder.js'
 import {
   diff,
   evolve,
-  shrink
+  shrink,
+  firehose
 } from './tools/index.js'
 
 export const tools = {
   diff,
   evolve,
-  shrink
+  shrink,
+  firehose
 }
 
 export const jsonSpec = jsonPkg
