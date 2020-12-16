@@ -4,7 +4,7 @@
     "moduleResolution": "node",
     "module": "ESNext",
     "outDir": "dist",
-    "declaration": false,
+    "declaration": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "alwaysStrict": true,
