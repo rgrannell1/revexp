@@ -1,9 +1,9 @@
 
-const firehose = function * (seconds:number) {
+const firehose = function * (gen:Function, seconds:number) {
   const start = Date.now()
 
   while (Date.now() - start > seconds) {
-    yield start
+    yield gen()
   }
 }
 

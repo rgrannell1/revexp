@@ -1,7 +1,7 @@
-const firehose = function* (seconds) {
+const firehose = function* (gen, seconds) {
     const start = Date.now();
     while (Date.now() - start > seconds) {
-        yield start;
+        yield gen();
     }
 };
 export default firehose;

@@ -12,7 +12,7 @@ export declare const tools: {
             timeElapsed: (target: number) => (count: number, start: number) => boolean;
         };
     };
-    firehose: (seconds: number) => Generator<number, void, unknown>;
+    firehose: (gen: Function, seconds: number) => Generator<any, void, unknown>;
 };
 export declare const jsonSpec: typeof jsonPkg;
 export declare const builder: (spec: import("./core/commons/types.js").Spec, part: import("./core/commons/types.js").Config) => string;
