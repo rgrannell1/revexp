@@ -1,8 +1,10 @@
 
-const firehose = function * (gen:Function, seconds:number) {
+import { StringThunk } from '../core/commons/types'
+
+const firehose = function* (gen: StringThunk, ms:number) {
   const start = Date.now()
 
-  while (Date.now() - start > seconds) {
+  while (Date.now() - start > ms) {
     yield gen()
   }
 }

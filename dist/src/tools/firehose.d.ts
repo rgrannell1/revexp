@@ -1,2 +1,3 @@
-declare const firehose: (gen: Function, seconds: number) => Generator<any, void, unknown>;
+import { StringThunk } from '../core/commons/types';
+declare const firehose: (gen: StringThunk, ms: number) => Generator<string, void, unknown>;
 export default firehose;

@@ -16,4 +16,4 @@ export declare const shrink: {
         timeElapsed: (target: number) => (count: number, start: number) => boolean;
     };
 };
-export declare const firehose: (gen: Function, seconds: number) => Generator<any, void, unknown>;
+export declare const firehose: (gen: import("../core/commons/types.js").StringThunk, ms: number) => Generator<string, void, unknown>;
