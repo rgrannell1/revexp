@@ -1,6 +1,6 @@
 const firehose = function* (gen, ms) {
     const start = Date.now();
-    while (Date.now() - start > ms) {
+    while (Date.now() - start < ms) {
         yield gen();
     }
 };
