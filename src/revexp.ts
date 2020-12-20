@@ -44,6 +44,10 @@ import {
   repeat
 } from './core/quantifiers.js'
 
+import {
+  fromTemplate
+} from './core/template.js'
+
 export const parts = {
   oneOf,
   notOneOf,
@@ -57,5 +61,6 @@ export const parts = {
   regexp,
   and,
   or,
-  repeat
+  repeat,
+  fromTemplate
 }
