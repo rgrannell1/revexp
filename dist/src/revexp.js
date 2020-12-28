@@ -13,6 +13,7 @@ import { oneOf, notOneOf, range } from './core/character-classes.js';
 import { any, digit, nonZeroDigit, space, literal, nonLineBreak, regexp } from './core/characters.js';
 import { and, or } from './core/logic.js';
 import { repeat } from './core/quantifiers.js';
+import { fromTemplate } from './core/template.js';
 export const parts = {
     oneOf,
     notOneOf,
@@ -26,5 +27,6 @@ export const parts = {
     regexp,
     and,
     or,
-    repeat
+    repeat,
+    fromTemplate
 };

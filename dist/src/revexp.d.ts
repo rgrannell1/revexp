@@ -30,4 +30,5 @@ export declare const parts: {
     and: (ths: import("./core/commons/types.js").Stringish[]) => () => string;
     or: (ths: import("./core/commons/types.js").Stringish[]) => import("./core/commons/types.js").StringThunk;
     repeat: (th: import("./core/commons/types.js").Stringish, opts: import("./core/quantifiers.js").RepeatOpts) => () => string;
+    fromTemplate: (strings: TemplateStringsArray, ...keys: any) => () => string[];
 };
