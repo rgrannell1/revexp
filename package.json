@@ -1,5 +1,5 @@
 {
-  "name": "revexp",
+  "name": "@rgrannell/revexp",
   "type": "module",
   "version": "1.0.0",
   "description": "Reverse regular-expression generator.",
@@ -18,6 +18,9 @@
     "@types/tap": "^14.10.1",
     "diff": "4.0.2",
     "randexp": "^0.5.3"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "chai": "^4.2.0",

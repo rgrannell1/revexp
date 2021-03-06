@@ -1,5 +1,6 @@
 
 import tap from 'tap'
+import { number } from '../src/json/spec.js'
 import * as revexp from '../src/revexp.js'
 const { parts: R } = revexp
 
@@ -36,6 +37,28 @@ tests.createVisa = () => {
   }
 }
 
+tests.template = () => {
+  const numberPair = R.fromTemplate`${R.digit}-${R.digit}`
+
+  const failure = revexp.tools.shrink({
+    test(str: string) {
+      const expectedPattern = /$[0-9]\-[0-9]^/g
+      return expectedPattern.test(str)
+    },
+    gen: numberPair,
+    until: revexp.tools.shrink.until.timeElapsed(10_000),
+    all: false
+  })
+
+  if (failure) {
+    const message = 'expected zero failing cases\n\n:' + summariseCases(failure)
+    throw new Error(message)
+  } else {
+    tap.pass(`template-generator created successfully.`)
+  }
+
+}
+
 tests.createIntegers = () => {
   const int = R.repeat(R.digit, { from: 10, to: 10 })
 
@@ -60,3 +83,4 @@ tests.createIntegers = () => {
 
 tests.createIntegers()
 tests.createVisa()
+tests.template()
