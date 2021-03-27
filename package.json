@@ -1,7 +1,7 @@
 {
   "name": "@rgrannell/revexp",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Reverse regular-expression generator.",
   "types": "dist/src/revexp.d.ts",
   "main": "dist/src/revexp.js",
