@@ -1,11 +1,7 @@
 
 import * as random from './random.js'
 
-import {
-  Stringish
-} from './commons/types'
-
-export const or = (ths: Stringish[]) => {
+export const or = (ths: (string | (() => string))[]) => {
   const res = random.oneOf(ths)
 
   return typeof res === 'string'
@@ -13,7 +9,7 @@ export const or = (ths: Stringish[]) => {
     : res
 }
 
-export const and = (ths: Stringish[]) => {
+export const and = (ths: (string | (() => string))[]) => {
   return () => ths.map(th => {
     return typeof th === 'string'
       ? th

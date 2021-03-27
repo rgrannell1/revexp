@@ -1,5 +1,3 @@
-export declare type StringThunk = () => string;
-export declare type Stringish = StringThunk | string;
 export interface Every {
     every: any[];
 }

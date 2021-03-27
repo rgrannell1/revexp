@@ -1,4 +1,3 @@
-import { StringThunk } from './commons/types.js';
 export declare const any: () => string;
 /**
  * Return a random digit
@@ -23,7 +22,7 @@ export declare const space: () => string;
  *
  * @return {number} the provided data
  */
-export declare const literal: (str: string) => StringThunk;
+export declare const literal: (str: string) => () => string;
 /**
  * Any non-line break character
  *
@@ -35,4 +34,4 @@ export declare const nonLineBreak: () => () => string;
  *
  * @return {number} the provided data
  */
-export declare const regexp: (re: RegExp) => StringThunk;
+export declare const regexp: (re: RegExp) => () => string;

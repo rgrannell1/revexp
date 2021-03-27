@@ -1,8 +1,5 @@
 
 import * as random from './random.js'
-import {
-  Stringish
-} from './commons/types'
 
 export interface RepeatOpts {
   from?: number,
@@ -10,7 +7,17 @@ export interface RepeatOpts {
   count?: number
 }
 
-export const repeat = (th: Stringish, opts: RepeatOpts) => {
+/**
+ * Repeat the result of a generator and concatenate the results
+ *
+ * @param th a thunk that returns a string, or a string
+ * @param opts an object with two fields:
+ *   - from: a number, lower bound to repeat
+ *   - to: a number, upper bound to repeat
+ *
+ * @returns a thunk that returns a string
+ */
+export const repeat = (th: (string | (() => string)), opts: RepeatOpts) => {
   return () => {
     if (opts.from === 0 && opts.to === 0) {
       return ''
@@ -27,4 +34,18 @@ export const repeat = (th: Stringish, opts: RepeatOpts) => {
 
     return word
   }
+}
+
+/**
+ * Either return the result of a string generator, or an empty string
+ *
+ * @param th either a string or a thunk that returns a string
+ *
+ * @returns a thunk that returns a string
+ */
+export const optional = (th: (string | (() => string))) => {
+  return repeat(th, {
+    from: 0,
+    to: 1
+  })
 }

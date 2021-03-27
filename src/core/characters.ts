@@ -3,9 +3,6 @@ import RandExp from 'randexp'
 
 import * as classes from './character-classes.js'
 import constants from './commons/constants.js'
-import {
-  StringThunk
-} from './commons/types.js'
 
 export const any = () => {
   return classes.range([constants.ranges.ALL_CHARS])
@@ -43,7 +40,7 @@ export const space = () => {
  *
  * @return {number} the provided data
  */
-export const literal = (str: string): StringThunk => {
+export const literal = (str: string): () => string => {
   return () => str
 }
 
@@ -61,7 +58,7 @@ export const nonLineBreak = () => {
  *
  * @return {number} the provided data
  */
-export const regexp = (re: RegExp): StringThunk => {
+export const regexp = (re: RegExp): () => string => {
   const compiled = new RandExp(re)
   return () => {
     // -- for now, just delegate to RandExp (which seems like a good module).

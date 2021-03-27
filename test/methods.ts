@@ -30,7 +30,7 @@ tests.createVisa = () => {
   })
 
   if (failure) {
-    const message = 'expected zero failing cases\n\n:' + summariseCases(failure)
+    const message = 'expected zero failing cases for createVisa\n\n:' + summariseCases(failure)
     throw new Error(message)
   } else {
     tap.pass(`ints created successfully.`)
@@ -51,7 +51,7 @@ tests.template = () => {
   })
 
   if (failure) {
-    const message = 'expected zero failing cases\n\n:' + summariseCases(failure)
+    const message = 'expected zero failing cases for template\n\n:' + summariseCases(failure)
     throw new Error(message)
   } else {
     tap.pass(`template-generator created successfully.`)
@@ -74,7 +74,7 @@ tests.createIntegers = () => {
   })
 
   if (failure) {
-    const message = 'expected zero failing cases\n\n:' + summariseCases(failure)
+    const message = 'expected zero failing cases for createIntegers\n\n:' + summariseCases(failure)
     throw new Error(message)
   } else {
     tap.pass(`ints created successfully.`)

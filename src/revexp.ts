@@ -41,7 +41,8 @@ import {
 } from './core/logic.js'
 
 import {
-  repeat
+  repeat,
+  optional
 } from './core/quantifiers.js'
 
 import {
@@ -62,5 +63,6 @@ export const parts = {
   and,
   or,
   repeat,
+  optional,
   fromTemplate
 }

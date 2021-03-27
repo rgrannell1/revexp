@@ -1,7 +1,4 @@
 
-export type StringThunk = () => string
-export type Stringish = StringThunk | string
-
 export interface Every {
   every: any[]
 }

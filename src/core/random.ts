@@ -1,4 +1,11 @@
 
+/**
+ * Select a random value from an array.
+ *
+ * @param elems an array of elements
+ *
+ * @returns an element from the array
+ */
 export const oneOf = <I>(elems:I[]) => {
   if (!elems || elems.length === 0) {
     throw new Error('no elements provided; cannot choose between options.')
@@ -8,18 +15,29 @@ export const oneOf = <I>(elems:I[]) => {
   }
 }
 
+/**
+ * Return a random integer in a range
+ *
+ * @param from lower bound
+ * @param to upper bound
+ *
+ * @returns a number in the bounded range
+ */
 export const range = (from: number, to: number): number => {
   return Math.floor(Math.random() * (to - from)) + from
 }
 
-interface SampleOpts {
-  ranges: number[][]
-}
-
+/**
+ * Return a random character in the provided numeric ranges
+ *
+ * @param ranges an array of character ranges
+ *
+ * @returns a randomly selected character
+ */
 export const sample = (ranges:number[][]) => {
-  const ith = Math.floor(Math.random() * ranges.length)
+  const idx = Math.floor(Math.random() * ranges.length)
 
-  let [lower, upper] = ranges[ith]
+  let [lower, upper] = ranges[idx]
   if (typeof upper === 'undefined') {
     upper = lower + 1
   }
@@ -27,6 +45,11 @@ export const sample = (ranges:number[][]) => {
   return String.fromCharCode(range(lower, upper))
 }
 
-export const coinFlip = () => {
+/**
+ * Returns a random boolean variable
+ *
+ * @returns a boolean
+ */
+export const coinFlip = (): boolean => {
   return Math.random() >= 0.5
 }

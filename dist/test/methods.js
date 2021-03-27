@@ -38,7 +38,7 @@ tests.template = () => {
         all: false
     });
     if (failure) {
-        const message = 'expected zero failing cases\n\n:' + summariseCases(failure);
+        const message = 'expected zero failing cases for template\n\n:' + summariseCases(failure);
         throw new Error(message);
     }
     else {
@@ -57,7 +57,7 @@ tests.createIntegers = () => {
         all: false
     });
     if (failure) {
-        const message = 'expected zero failing cases\n\n:' + summariseCases(failure);
+        const message = 'expected zero failing cases for createIntegers\n\n:' + summariseCases(failure);
         throw new Error(message);
     }
     else {
