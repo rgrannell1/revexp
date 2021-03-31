@@ -16,7 +16,7 @@
   "dependencies": {
     "@types/diff": "^4.0.2",
     "@types/tap": "^14.10.1",
-    "atypical": "file:../atypical",
+    "atypical": "github:rgrannell1/atypical",
     "c8": "^7.7.0",
     "diff": "4.0.2",
     "randexp": "^0.5.3"
