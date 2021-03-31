@@ -17,10 +17,12 @@ export interface RepeatOpts {
  *
  * @returns a thunk that returns a string
  */
-export const repeat = (th: (string | (() => string)), opts: RepeatOpts) => {
+export const repeat = (th: (string | (() => string)), opts: RepeatOpts): () => string => {
   return () => {
     if (opts.from === 0 && opts.to === 0) {
       return ''
+    } else if (opts.from === opts.to && typeof opts.from !== 'undefined') {
+      return repeat(th, { count: opts.from })()
     }
 
     const repeatCount = opts.count

@@ -9,13 +9,15 @@
   "license": "MIT",
   "scripts": {
     "tsc": "tsc",
-    "test": "npm run tsc && npm run clean:declarations && npx tap dist/test --no-esm --no-coverage --timeout 300",
+    "test": "npm run tsc && c8 node dist/test/index.js",
     "clean:declarations": "find dist/test -type f -name '*.d.ts' -delete",
     "standard": "npx standard --fix"
   },
   "dependencies": {
     "@types/diff": "^4.0.2",
     "@types/tap": "^14.10.1",
+    "atypical": "file:../atypical",
+    "c8": "^7.7.0",
     "diff": "4.0.2",
     "randexp": "^0.5.3"
   },

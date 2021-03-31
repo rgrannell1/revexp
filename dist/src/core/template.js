@@ -13,6 +13,6 @@ export const fromTemplate = (strings, ...keys) => {
                 : key;
             result.push(evalled, strings[ith + 1]);
         });
-        return result;
+        return result.join('');
     };
 };

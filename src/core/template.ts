@@ -16,6 +16,6 @@ export const fromTemplate = (strings:TemplateStringsArray, ...keys:any) => {
       result.push(evalled, strings[ith + 1])
     })
 
-    return result
+    return result.join('')
   }
 }

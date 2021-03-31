@@ -14,6 +14,9 @@ export const repeat = (th, opts) => {
         if (opts.from === 0 && opts.to === 0) {
             return '';
         }
+        else if (opts.from === opts.to && typeof opts.from !== 'undefined') {
+            return repeat(th, { count: opts.from })();
+        }
         const repeatCount = opts.count
             ? opts.count - 1
             : random.range(opts.from, opts.to);

@@ -4,4 +4,4 @@
  * @param strings
  * @param keys
  */
-export declare const fromTemplate: (strings: TemplateStringsArray, ...keys: any) => () => string[];
+export declare const fromTemplate: (strings: TemplateStringsArray, ...keys: any) => () => string;

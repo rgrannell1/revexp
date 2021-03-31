@@ -31,5 +31,5 @@ export declare const parts: {
     or: (ths: (string | (() => string))[]) => () => string;
     repeat: (th: string | (() => string), opts: import("./core/quantifiers.js").RepeatOpts) => () => string;
     optional: (th: string | (() => string)) => () => string;
-    fromTemplate: (strings: TemplateStringsArray, ...keys: any) => () => string[];
+    fromTemplate: (strings: TemplateStringsArray, ...keys: any) => () => string;
 };
