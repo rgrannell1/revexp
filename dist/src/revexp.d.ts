@@ -25,7 +25,7 @@ export declare const parts: {
     nonZeroDigit: () => string;
     space: () => string;
     literal: (str: string) => () => string;
-    nonLineBreak: () => () => string;
+    nonLineBreak: () => string;
     regexp: (re: RegExp) => () => string;
     and: (ths: (string | (() => string))[]) => () => string;
     or: (ths: (string | (() => string))[]) => () => string;

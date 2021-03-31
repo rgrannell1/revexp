@@ -28,7 +28,7 @@ export declare const literal: (str: string) => () => string;
  *
  * @return {number} return a character
  */
-export declare const nonLineBreak: () => () => string;
+export declare const nonLineBreak: () => string;
 /**
  * Return a literal character or character sequence
  *

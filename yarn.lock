@@ -344,7 +344,7 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@rgrannell/revexp@^1.0.0":
+"@rgrannell/revexp@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@rgrannell/revexp/-/revexp-1.1.0.tgz#dac14cc0d993766e8f048b9eeda98e23c62472c9"
   integrity sha512-lSLwOTmy5xyJTGsYtEUSkj+oP20XtkI1CAEC7PcMAFsMC5TtFv/ZSbtlp9g6Arf4TmbsFFydcl/1gEFbl6pWYA==
@@ -678,9 +678,9 @@ asynckit@^0.4.0:
 
 "atypical@github:rgrannell1/atypical":
   version "1.0.0"
-  resolved "https://codeload.github.com/rgrannell1/atypical/tar.gz/63863bd4df22cc84dcb88c3143686584d4783d76"
+  resolved "https://codeload.github.com/rgrannell1/atypical/tar.gz/e2629af9c6f0a35d1eae7d20760c3e1230840d57"
   dependencies:
-    "@rgrannell/revexp" "^1.0.0"
+    "@rgrannell/revexp" "^1.1.0"
     c8 "^7.6.0"
     chalk "^4.1.0"
     typescript "^4.2.3"

@@ -42,7 +42,7 @@ export const literal = (str) => {
  * @return {number} return a character
  */
 export const nonLineBreak = () => {
-    return classes.notOneOf(['\n']);
+    return classes.notOneOf(['\n'])();
 };
 /**
  * Return a literal character or character sequence
