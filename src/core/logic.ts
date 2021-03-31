@@ -1,7 +1,7 @@
 
 import * as random from './random.js'
 
-export const or = (ths: (string | (() => string))[]) => {
+export const or = (ths: Array<string | (() => string)>): (() => string) => {
   const res = random.oneOf(ths)
 
   return typeof res === 'string'
@@ -9,7 +9,7 @@ export const or = (ths: (string | (() => string))[]) => {
     : res
 }
 
-export const and = (ths: (string | (() => string))[]) => {
+export const and = (ths: Array<string | (() => string)>): (() => string) => {
   return () => ths.map(th => {
     return typeof th === 'string'
       ? th

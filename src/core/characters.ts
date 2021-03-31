@@ -4,7 +4,7 @@ import RandExp from 'randexp'
 import * as classes from './character-classes.js'
 import constants from './commons/constants.js'
 
-export const any = () => {
+export const any = (): string => {
   return classes.range([constants.ranges.ALL_CHARS])
 }
 
@@ -13,7 +13,7 @@ export const any = () => {
  *
  * @return {number} return a digit
  */
-export const digit = () => {
+export const digit = (): string => {
   return classes.range([constants.ranges.DIGITS])
 }
 
@@ -22,7 +22,7 @@ export const digit = () => {
  *
  * @return {number} return a digit
  */
-export const nonZeroDigit = () => {
+export const nonZeroDigit = (): string => {
   return classes.range([constants.ranges.NONZERO_DIGITS])
 }
 
@@ -31,7 +31,7 @@ export const nonZeroDigit = () => {
  *
  * @return {number} return a character
  */
-export const space = () => {
+export const space = (): string => {
   return classes.range(constants.rangeSets.SPACES)
 }
 
@@ -49,8 +49,8 @@ export const literal = (str: string): () => string => {
  *
  * @return {number} return a character
  */
-export const nonLineBreak = () => {
-  return classes.notOneOf(['\n'])
+export const nonLineBreak = (): string => {
+  return classes.notOneOf(['\n'])()
 }
 
 /**
