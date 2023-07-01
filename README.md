@@ -1,7 +1,7 @@
 
 # revexp ![CI](https://github.com/rgrannell1/revexp/workflows/CI/badge.svg)
 
-Create endless random strings that match a pattern.
+Create endless random strings that match a pattern. 
 
 ### Usage
 
@@ -12,7 +12,7 @@ Revexp can be called in two ways:
 
 ### Stability Index
 
-1, Experimental - This project might die, it's undertested and underdocumented, and redesigns and breaking changes are likely
+1, Deprecated. Use [Peach](https://github.com/rgrannell1/peach.ts) instead, as it can generate non-string values too
 
 ### Files
 
